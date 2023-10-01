@@ -20,8 +20,8 @@ public class Proyecto_ENRIQUERAFAEL {
            
         Semaphore mutex = new Semaphore(1);
         // TODO code application logic here
-        Drive drive = new Drive(0, 0);
-        Developer dev1 = new Developer(0, 0.34f, drive,mutex);
+        Drive drive = new Drive(0, 0,0,0);
+        Developer dev1 = new Developer(1, 0.25f, drive,mutex);
         
         
         dev1.start();

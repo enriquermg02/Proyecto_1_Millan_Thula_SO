@@ -51,7 +51,8 @@ public class Developer extends Thread {
             try {
                  // sección critica
                 this.mutex.acquire(1);
-                this.drive.addProduct(1, type);
+                
+                this.drive.addProduct( type);
               
                 this.acc=0;
                 this.mutex.release();
@@ -64,6 +65,7 @@ public class Developer extends Thread {
         }
         System.out.println(this.drive.getLevels());
     }
+    
     
     
     
