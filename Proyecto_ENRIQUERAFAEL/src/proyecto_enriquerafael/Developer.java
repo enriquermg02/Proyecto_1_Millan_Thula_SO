@@ -22,13 +22,16 @@ public class Developer extends Thread {
     private int dayDuration = 1000;
     private float acc = 0;
     private Drive drive;
+    private Recursos recursos;
     static Semaphore mutex;
     
-    public Developer (int type, float pp, Drive drive, Semaphore m){
+    public Developer (int type, float pp, Drive drive, Semaphore m,Recursos recursos){
         this.type = type;
         this.productionPerDay = pp;
         this.drive = drive;
         this.mutex = m;
+        this.recursos=recursos;
+        
         
     }
 
@@ -54,7 +57,7 @@ public class Developer extends Thread {
         if (this.acc >= 1){
             try {
                  // sección critica
-         
+                recursos.agregar(type);
                 this.mutex.acquire(1);
                 
                 this.drive.addProduct( type);
@@ -68,7 +71,6 @@ public class Developer extends Thread {
            
             
         }
-        System.out.println(this.drive.getNarrative());
     }
     
     

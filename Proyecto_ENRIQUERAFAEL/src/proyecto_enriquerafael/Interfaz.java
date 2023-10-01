@@ -20,11 +20,13 @@ public class Interfaz extends javax.swing.JFrame {
  
     static Drive drive;
     static Semaphore mutex;
+    static Recursos recursos;
     private Thread acto;
-    public Interfaz(Drive drive,Semaphore mutex) {
+    public Interfaz(Drive drive,Semaphore mutex,Recursos recursos) {
         initComponents();
         this.drive=drive;
         this.mutex= mutex;
+        this.recursos =recursos;
         
         Actualizar();
     }
@@ -37,8 +39,9 @@ public class Interfaz extends javax.swing.JFrame {
     
     public void Actualizar(){
         
-        HilosGui dev1 = new HilosGui(drive,Texto0);
-        dev1.start();
+        HilosGui actu = new HilosGui(drive,Texto0,Texto1,Texto2,Texto3,Texto4);
+        actu.start();
+        
         
         
         
@@ -65,6 +68,7 @@ public class Interfaz extends javax.swing.JFrame {
         Texto2 = new javax.swing.JTextField();
         Texto3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        Texto4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,6 +102,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+        jPanel1.add(Texto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 80, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -2, 570, 450));
 
@@ -151,7 +156,7 @@ public class Interfaz extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz( drive,mutex).setVisible(true);
+                new Interfaz( drive,mutex,recursos).setVisible(true);
                 
                 
                 
@@ -167,6 +172,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField Texto1;
     private javax.swing.JTextField Texto2;
     private javax.swing.JTextField Texto3;
+    private javax.swing.JTextField Texto4;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner sistems;

@@ -13,13 +13,25 @@ public class Drive {
     public int narrative;
     public int sprite;
     public int sistem;
+    public int DLC;
 
-    public Drive(int levels, int narrative, int sprite, int sistem) {
+    public Drive(int levels, int narrative, int sprite, int sistem, int DLC) {
         this.levels = levels;
         this.narrative = narrative;
         this.sprite = sprite;
         this.sistem = sistem;
+        this.DLC = DLC;
     }
+
+    public int getDLC() {
+        return DLC;
+    }
+
+    public void setDLC(int DLC) {
+        this.DLC = DLC;
+    }
+
+ 
 
     public int getSistem() {
         return sistem;
@@ -82,10 +94,14 @@ public class Drive {
         
         setSistem(getSistem()+5);
         
-    }
+    }else if ((type==4)&&(getSprite()<10)){
+        
+        setDLC(getDLC()+1);
+        
     
     
     
     
     }
+}
 }

@@ -16,12 +16,21 @@ public class HilosGui extends Thread  {
     
     private Drive drive;
 
-    javax.swing.JTextField Texto;
+    javax.swing.JTextField Texto0;
+   
+    javax.swing.JTextField Texto1;
+    javax.swing.JTextField Texto2;
+    javax.swing.JTextField Texto3;
+     javax.swing.JTextField Texto4;
     
-    public HilosGui(Drive drive,javax.swing.JTextField Texto) {
+    public HilosGui(Drive drive,javax.swing.JTextField Texto0,javax.swing.JTextField Texto1,javax.swing.JTextField Texto2,javax.swing.JTextField Texto3,    javax.swing.JTextField Texto4) {
         
         this.drive=drive;
-        this.Texto=Texto;
+        this.Texto0=Texto0;
+        this.Texto1=Texto1;
+        this.Texto2=Texto2;
+        this.Texto3=Texto3;
+        this.Texto4=Texto4;
     }
     
         
@@ -32,17 +41,22 @@ public class HilosGui extends Thread  {
         
     public void run() {
         while(true) {
-            actualizar(Texto);
+            actualizar(Texto0,Texto1,Texto2,Texto3,Texto4);
          
     }
     
     }  
-     public void actualizar(javax.swing.JTextField Texto){
+     public void actualizar(javax.swing.JTextField Texto0,javax.swing.JTextField Texto1,javax.swing.JTextField Texto2,javax.swing.JTextField Texto3,    javax.swing.JTextField Texto4){
          
 
          
          while(true){
-          Texto.setText(String.valueOf(drive.getNarrative()));
+          Texto0.setText(String.valueOf(drive.getNarrative()));
+          Texto1.setText(String.valueOf(drive.getLevels()));
+          Texto2.setText(String.valueOf(drive.getSprite()));
+          Texto3.setText(String.valueOf(drive.getSistem()));
+          Texto4.setText(String.valueOf(drive.getDLC()));
+          
 
          }
          
