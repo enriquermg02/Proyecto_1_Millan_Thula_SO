@@ -38,10 +38,10 @@ public class Integradores extends Thread {
                 sleep(dayDuration);
                 
                 
-                
             } catch (InterruptedException ex) {
                 Logger.getLogger(Developer.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
     }
     
@@ -51,7 +51,9 @@ public class Integradores extends Thread {
             try {
                  // sección critica
                 this.mutex.acquire(1);
-
+               
+                
+                
                 this.mutex.release();
                 
             } catch (InterruptedException ex) {
