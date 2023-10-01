@@ -21,10 +21,14 @@ public class Proyecto_ENRIQUERAFAEL {
         Semaphore mutex = new Semaphore(1);
         // TODO code application logic here
         Drive drive = new Drive(0, 0,0,0);
-        Developer dev1 = new Developer(1, 0.25f, drive,mutex);
-        
-        
+        Interfaz inter= new Interfaz(drive,mutex);
+        inter.setVisible(true);
+        Developer dev1 = new Developer(0, 0.25f, drive,mutex);
         dev1.start();
+//        
+     
+        
+  
           
     }
     

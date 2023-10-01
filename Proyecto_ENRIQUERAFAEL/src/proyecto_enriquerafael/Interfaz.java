@@ -1,5 +1,7 @@
 package proyecto_enriquerafael;
 
+import java.util.concurrent.Semaphore;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,8 +16,34 @@ public class Interfaz extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
-    public Interfaz() {
+    
+ 
+    static Drive drive;
+    static Semaphore mutex;
+    private Thread acto;
+    public Interfaz(Drive drive,Semaphore mutex) {
         initComponents();
+        this.drive=drive;
+        this.mutex= mutex;
+        
+        Actualizar();
+    }
+
+    
+     public javax.swing.JTextField getTextField() {
+        return Texto0;
+    }
+    
+    
+    public void Actualizar(){
+        
+        HilosGui dev1 = new HilosGui(drive,Texto0);
+        dev1.start();
+        
+        
+        
+        System.out.println("hola");
+     
     }
 
     /**
@@ -32,6 +60,11 @@ public class Interfaz extends javax.swing.JFrame {
         Sprites = new javax.swing.JSpinner();
         sistems = new javax.swing.JSpinner();
         Narrativa = new javax.swing.JSpinner();
+        Texto0 = new javax.swing.JTextField();
+        Texto1 = new javax.swing.JTextField();
+        Texto2 = new javax.swing.JTextField();
+        Texto3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -42,10 +75,48 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(sistems, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
         jPanel1.add(Narrativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
 
+        Texto0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Texto0ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Texto0, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 80, -1));
+
+        Texto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Texto1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Texto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 80, -1));
+        jPanel1.add(Texto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 80, -1));
+        jPanel1.add(Texto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 80, -1));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -2, 570, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Texto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Texto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Texto1ActionPerformed
+
+    private void Texto0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Texto0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Texto0ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -75,9 +146,15 @@ public class Interfaz extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz().setVisible(true);
+                new Interfaz( drive,mutex).setVisible(true);
+                
+                
+                
             }
         });
     }
@@ -86,6 +163,11 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JSpinner Levels;
     private javax.swing.JSpinner Narrativa;
     private javax.swing.JSpinner Sprites;
+    private javax.swing.JTextField Texto0;
+    private javax.swing.JTextField Texto1;
+    private javax.swing.JTextField Texto2;
+    private javax.swing.JTextField Texto3;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner sistems;
     // End of variables declaration//GEN-END:variables
