@@ -4,10 +4,68 @@
  */
 package proyecto_enriquerafael;
 
+import static java.lang.Thread.sleep;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author leste
  */
 public class Integradores {
+    private Drive drive;
+    private float productionPerDay;
+    private int dayDuration = 1000;
+    private float acc = 0;
+    static Semaphore mutex;
+    
+
+
+
+    
+    public Integradores(float pp, Drive drive, Semaphore m){
+        this.productionPerDay = pp;
+        this.drive = drive;
+        this.mutex = m;
+        
+    }
+    
+    
+    public void run() {
+        while(true) {
+           
+            try {
+                
+                Work();
+                sleep(dayDuration);
+                
+                
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Developer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }
+    
+    public void Work(){
+        this.acc += this.productionPerDay;
+        if (this.acc >= 1){
+            try {
+                 // sección critica
+                this.mutex.acquire(1);
+               
+                
+                
+                this.mutex.release();
+                
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Developer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+            
+        }
+        System.out.println(this.drive.getLevels());
+    }
     
 }
