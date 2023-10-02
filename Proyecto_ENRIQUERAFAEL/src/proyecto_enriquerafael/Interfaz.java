@@ -39,14 +39,15 @@ public class Interfaz extends javax.swing.JFrame {
      
      public void projectmanager(){
          
-         ProjectManager lester=new ProjectManager(recursos,EstadoPM);
+         ProjectManager lester = new ProjectManager(recursos,EstadoPM);
 
          lester.start();
      }
+     
     
     public void Actualizar(){
         
-        HilosGui actu = new HilosGui(drive,Texto0,Texto1,Texto2,Texto3,Texto4);
+        HilosGui actu = new HilosGui(drive,Texto0,Texto1,Texto2,Texto3,Texto4,sinDLC,conDLC);
         actu.start();
      
     }
@@ -72,35 +73,62 @@ public class Interfaz extends javax.swing.JFrame {
         Texto1 = new javax.swing.JTextField();
         Texto2 = new javax.swing.JTextField();
         Texto3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         Texto4 = new javax.swing.JTextField();
+        sinDLC = new javax.swing.JTextField();
+        conDLC = new javax.swing.JTextField();
+        faltas = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         EstadoPM = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        sistems1 = new javax.swing.JSpinner();
+        sistems2 = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(Levels, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
-        jPanel1.add(Sprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
-        jPanel1.add(sistems, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
-        jPanel1.add(Narrativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
+        jPanel1.add(Levels, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+        jPanel1.add(Sprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+        jPanel1.add(sistems, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
+        jPanel1.add(Narrativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         Texto0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Texto0ActionPerformed(evt);
             }
         });
-        jPanel1.add(Texto0, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 80, -1));
+        jPanel1.add(Texto0, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 80, -1));
 
         Texto1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Texto1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Texto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 80, -1));
-        jPanel1.add(Texto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 80, -1));
-        jPanel1.add(Texto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 80, -1));
+        jPanel1.add(Texto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 80, -1));
+        jPanel1.add(Texto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 80, -1));
+        jPanel1.add(Texto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 80, -1));
+        jPanel1.add(Texto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 80, -1));
+
+        sinDLC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sinDLCActionPerformed(evt);
+            }
+        });
+        jPanel1.add(sinDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, -1, -1));
+        jPanel1.add(conDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
+        jPanel1.add(faltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -108,14 +136,51 @@ public class Interfaz extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
-        jPanel1.add(Texto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 80, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, -1, -1));
         jPanel1.add(EstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
 
         jLabel1.setText("Project Manager");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+        jPanel1.add(sistems1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+        jPanel1.add(sistems2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -2, 570, 450));
+        jLabel2.setText("Desarrolladores");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+
+        jLabel3.setText("Integradores");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
+
+        jLabel4.setText("Narrativa");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        jLabel5.setText("Niveles");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        jLabel6.setText("Sprite");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+
+        jLabel7.setText("Sistema");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+
+        jLabel8.setText("DLC");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 30, 20));
+
+        jLabel9.setText("Cantidad en drive");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, -1));
+
+        jLabel10.setText("Videojuegos listos");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
+
+        jLabel11.setText("Sin DLC");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+
+        jLabel12.setText("Con DLC");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
+
+        jLabel13.setText("Faltas");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -2, 840, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -133,6 +198,10 @@ public class Interfaz extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void sinDLCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sinDLCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sinDLCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,9 +254,26 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField Texto2;
     private javax.swing.JTextField Texto3;
     private javax.swing.JTextField Texto4;
+    private javax.swing.JTextField conDLC;
+    private javax.swing.JTextField faltas;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField sinDLC;
     private javax.swing.JSpinner sistems;
+    private javax.swing.JSpinner sistems1;
+    private javax.swing.JSpinner sistems2;
     // End of variables declaration//GEN-END:variables
 }

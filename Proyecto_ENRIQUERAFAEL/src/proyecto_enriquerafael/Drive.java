@@ -14,13 +14,17 @@ public class Drive {
     public int sprite;
     public int sistem;
     public int DLC;
+    public int juegos; 
+    public int juegosDLC;
 
-    public Drive(int levels, int narrative, int sprite, int sistem, int DLC) {
+    public Drive(int levels, int narrative, int sprite, int sistem, int DLC, int juegos, int juegosDLC) {
         this.levels = levels;
         this.narrative = narrative;
         this.sprite = sprite;
         this.sistem = sistem;
         this.DLC = DLC;
+        this.juegos = juegos;
+        this.juegosDLC = juegosDLC;
     }
 
     public int getDLC() {
@@ -69,6 +73,20 @@ public class Drive {
         this.narrative = narrative;
     }
     
+     /**
+     * @return the juegos
+     */
+    public int getJuegos() {
+        return juegos;
+    }
+
+    /**
+     * @param juegos the juegos to set
+     */
+    public void setJuegos(int juegos) {
+        this.juegos = juegos;
+    }
+    
     public void addProduct( int type){
         
 //        narrativa
@@ -99,9 +117,21 @@ public class Drive {
         setDLC(getDLC()+1);
         
     
-    
-    
-    
     }
 }
+
+    /**
+     * @return the juegosDLC
+     */
+    public int getJuegosDLC() {
+        return juegosDLC;
+    }
+
+    /**
+     * @param juegosDLC the juegosDLC to set
+     */
+    public void setJuegosDLC(int juegosDLC) {
+        this.juegosDLC = juegosDLC;
+    }
+    
 }

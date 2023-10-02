@@ -22,9 +22,9 @@ public class Proyecto_ENRIQUERAFAEL {
      
            
         Semaphore mutex = new Semaphore(1);
-        Recursos recursos= new Recursos(0,0,14);
+        Recursos recursos= new Recursos(0,0,14,0,0);
         // TODO code application logic here
-        Drive drive = new Drive(0, 0,0,0,0);
+        Drive drive = new Drive(0,0,0,0,0,0,0);
         Interfaz inter= new Interfaz(drive,mutex,recursos);
         inter.setVisible(true);
         
@@ -37,9 +37,10 @@ public class Proyecto_ENRIQUERAFAEL {
         Developer dev4 = new Developer(3, 0.25f, drive,mutex,recursos);
         dev4.start();
 //      Developer dev1 = new Developer(0, 0.25f, drive,mutex);
-    
         Developer dev5 = new Developer(4, 1, drive,mutex,recursos);
         dev5.start();
+        Integradores inte = new Integradores(0.5f, drive, mutex, recursos);
+        inte.start();
 
      
         

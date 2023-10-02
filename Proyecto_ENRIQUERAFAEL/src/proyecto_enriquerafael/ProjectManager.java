@@ -66,14 +66,8 @@ public class ProjectManager extends Thread{
                     sleep(334);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            }
                 
-     
-    
-            
-         
-  
-    
         }
     
     

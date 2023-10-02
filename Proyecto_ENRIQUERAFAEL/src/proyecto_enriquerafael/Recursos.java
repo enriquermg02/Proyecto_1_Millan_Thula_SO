@@ -12,11 +12,15 @@ public class Recursos {
     private int SueldoEmpleados;
     private int SueldoProjectManager;
     private int Dias;
+    private int dineroProducido;
+    private int faltas;
 
-    public Recursos(int SueldoEmpleados, int SueldoProjectManager,int dias) {
+    public Recursos(int SueldoEmpleados, int SueldoProjectManager,int dias, int dineroProducido, int faltas) {
         this.SueldoEmpleados = SueldoEmpleados;
         this.SueldoProjectManager = SueldoProjectManager;
         this.Dias=dias;
+        this.dineroProducido = dineroProducido;
+        this.faltas = faltas;
     }
 
     public int getSueldoEmpleados() {
@@ -82,5 +86,33 @@ public class Recursos {
     }
     
     
+    }
+
+    /**
+     * @return the dineroProducido
+     */
+    public int getDineroProducido() {
+        return dineroProducido;
+    }
+
+    /**
+     * @param dineroProducido the dineroProducido to set
+     */
+    public void setDineroProducido(int dineroProducido) {
+        this.dineroProducido = dineroProducido;
+    }
+
+    /**
+     * @return the faltas
+     */
+    public int getFaltas() {
+        return faltas;
+    }
+
+    /**
+     * @param faltas the faltas to set
+     */
+    public void setFaltas(int faltas) {
+        this.faltas = faltas;
     }
 }
