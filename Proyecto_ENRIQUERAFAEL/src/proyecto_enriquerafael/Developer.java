@@ -55,9 +55,15 @@ public class Developer extends Thread {
     public void Work(){
         this.acc += this.productionPerDay;
         if (this.acc >= 1){
+            
+            
+            
+            
+            
+            
             try {
                  // sección critica
-                recursos.agregar(type);
+                
                 this.mutex.acquire(1);
                 
                 this.drive.addProduct( type);

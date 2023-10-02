@@ -21,7 +21,6 @@ public class Interfaz extends javax.swing.JFrame {
     static Drive drive;
     static Semaphore mutex;
     static Recursos recursos;
-    private Thread acto;
     public Interfaz(Drive drive,Semaphore mutex,Recursos recursos) {
         initComponents();
         this.drive=drive;
@@ -29,6 +28,7 @@ public class Interfaz extends javax.swing.JFrame {
         this.recursos =recursos;
         
         Actualizar();
+        projectmanager();
     }
 
     
@@ -36,18 +36,23 @@ public class Interfaz extends javax.swing.JFrame {
         return Texto0;
     }
     
+     
+     public void projectmanager(){
+         
+         ProjectManager lester=new ProjectManager(recursos,EstadoPM);
+
+         lester.start();
+     }
     
     public void Actualizar(){
         
         HilosGui actu = new HilosGui(drive,Texto0,Texto1,Texto2,Texto3,Texto4);
         actu.start();
-        
-        
-        
-        
-        System.out.println("hola");
      
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,6 +74,8 @@ public class Interfaz extends javax.swing.JFrame {
         Texto3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         Texto4 = new javax.swing.JTextField();
+        EstadoPM = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,6 +110,10 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
         jPanel1.add(Texto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 80, -1));
+        jPanel1.add(EstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
+
+        jLabel1.setText("Project Manager");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -2, 570, 450));
 
@@ -165,6 +176,7 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField EstadoPM;
     private javax.swing.JSpinner Levels;
     private javax.swing.JSpinner Narrativa;
     private javax.swing.JSpinner Sprites;
@@ -174,6 +186,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField Texto3;
     private javax.swing.JTextField Texto4;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner sistems;
     // End of variables declaration//GEN-END:variables

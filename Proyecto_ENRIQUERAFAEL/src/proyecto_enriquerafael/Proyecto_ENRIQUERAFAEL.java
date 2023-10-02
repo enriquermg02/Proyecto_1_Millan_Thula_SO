@@ -22,7 +22,7 @@ public class Proyecto_ENRIQUERAFAEL {
      
            
         Semaphore mutex = new Semaphore(1);
-        Recursos recursos= new Recursos(0,0);
+        Recursos recursos= new Recursos(0,0,14);
         // TODO code application logic here
         Drive drive = new Drive(0, 0,0,0,0);
         Interfaz inter= new Interfaz(drive,mutex,recursos);

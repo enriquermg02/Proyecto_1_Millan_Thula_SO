@@ -11,10 +11,12 @@ package proyecto_enriquerafael;
 public class Recursos {
     private int SueldoEmpleados;
     private int SueldoProjectManager;
+    private int Dias;
 
-    public Recursos(int SueldoEmpleados, int SueldoProjectManager) {
+    public Recursos(int SueldoEmpleados, int SueldoProjectManager,int dias) {
         this.SueldoEmpleados = SueldoEmpleados;
         this.SueldoProjectManager = SueldoProjectManager;
+        this.Dias=dias;
     }
 
     public int getSueldoEmpleados() {
@@ -31,6 +33,14 @@ public class Recursos {
 
     public void setSueldoProjectManager(int SueldoProjectManager) {
         this.SueldoProjectManager = SueldoProjectManager;
+    }
+
+    public int getDias() {
+        return Dias;
+    }
+
+    public void setDias(int Dias) {
+        this.Dias = Dias;
     }
     
     public void agregar(int type){

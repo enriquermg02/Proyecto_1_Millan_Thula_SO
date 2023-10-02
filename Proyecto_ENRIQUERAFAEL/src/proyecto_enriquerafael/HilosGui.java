@@ -15,13 +15,14 @@ public class HilosGui extends Thread  {
 
     
     private Drive drive;
-
+  
     javax.swing.JTextField Texto0;
    
     javax.swing.JTextField Texto1;
     javax.swing.JTextField Texto2;
     javax.swing.JTextField Texto3;
      javax.swing.JTextField Texto4;
+    
     
     public HilosGui(Drive drive,javax.swing.JTextField Texto0,javax.swing.JTextField Texto1,javax.swing.JTextField Texto2,javax.swing.JTextField Texto3,    javax.swing.JTextField Texto4) {
         
@@ -31,6 +32,7 @@ public class HilosGui extends Thread  {
         this.Texto2=Texto2;
         this.Texto3=Texto3;
         this.Texto4=Texto4;
+
     }
     
         
@@ -56,6 +58,7 @@ public class HilosGui extends Thread  {
           Texto2.setText(String.valueOf(drive.getSprite()));
           Texto3.setText(String.valueOf(drive.getSistem()));
           Texto4.setText(String.valueOf(drive.getDLC()));
+          
           
 
          }
