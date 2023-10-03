@@ -17,7 +17,7 @@ import static proyecto_enriquerafael.Interfaz.drive;
 public class Developer extends Thread {
     
     static javax.swing.JTextField Texto0;
-     private int type;
+    private int type;
     private float productionPerDay;
     private int dayDuration = 1000;
     private float acc = 0;

@@ -1,6 +1,7 @@
 package proyecto_enriquerafael;
 
 import java.util.concurrent.Semaphore;
+import javax.swing.JSpinner;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,31 +18,56 @@ public class Interfaz extends javax.swing.JFrame {
      * Creates new form Interfaz
      */
     
- 
+    static Thread NarrativaDevelopers [];
     static Drive drive;
     static Semaphore mutex;
     static Recursos recursos;
-    public Interfaz(Drive drive,Semaphore mutex,Recursos recursos) {
+    static ContadorProvisional ContadorSpinner;
+    public Interfaz(Drive drive,Semaphore mutex,Recursos recursos,Thread NarrativaDevelopers [],ContadorProvisional ContadorSpinner) {
         initComponents();
         this.drive=drive;
         this.mutex= mutex;
         this.recursos =recursos;
-        
+        this. NarrativaDevelopers=NarrativaDevelopers ;
+        this.ContadorSpinner=ContadorSpinner;
         Actualizar();
-        projectmanager();
+        setLocationRelativeTo(null);
+//        verificar(DLC);
+//  
+ 
     }
 
+    
+     public void verificar(javax.swing.JSpinner DLC){
+         
+         while(true){
+
+             if (Integer.parseInt(DLC.getValue().toString())<0){
+                 DLC.setValue(1);
+             }
+         }
+         
+         
+     }
+ 
+    
     
      public javax.swing.JTextField getTextField() {
         return Texto0;
     }
-    
+
+
+     
+  
+     
+     
      
      public void projectmanager(){
          
          ProjectManager lester = new ProjectManager(recursos,EstadoPM);
 
          lester.start();
+         
      }
      
     
@@ -52,7 +78,7 @@ public class Interfaz extends javax.swing.JFrame {
      
     }
     
-    
+
     
 
     /**
@@ -81,7 +107,7 @@ public class Interfaz extends javax.swing.JFrame {
         EstadoPM = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         sistems1 = new javax.swing.JSpinner();
-        sistems2 = new javax.swing.JSpinner();
+        DLC = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -102,6 +128,12 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(Levels, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
         jPanel1.add(Sprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
         jPanel1.add(sistems, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
+
+        Narrativa.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                NarrativaStateChanged(evt);
+            }
+        });
         jPanel1.add(Narrativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         Texto0.addActionListener(new java.awt.event.ActionListener() {
@@ -109,26 +141,26 @@ public class Interfaz extends javax.swing.JFrame {
                 Texto0ActionPerformed(evt);
             }
         });
-        jPanel1.add(Texto0, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 80, -1));
+        jPanel1.add(Texto0, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 80, -1));
 
         Texto1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Texto1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Texto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 80, -1));
-        jPanel1.add(Texto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 80, -1));
-        jPanel1.add(Texto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 80, -1));
-        jPanel1.add(Texto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 80, -1));
+        jPanel1.add(Texto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 80, -1));
+        jPanel1.add(Texto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 80, -1));
+        jPanel1.add(Texto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 80, -1));
+        jPanel1.add(Texto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 80, -1));
 
         sinDLC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sinDLCActionPerformed(evt);
             }
         });
-        jPanel1.add(sinDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, -1, -1));
+        jPanel1.add(sinDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 80, -1));
         jPanel1.add(conDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
-        jPanel1.add(faltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+        jPanel1.add(faltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 80, -1));
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -136,13 +168,13 @@ public class Interfaz extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
         jPanel1.add(EstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
 
         jLabel1.setText("Project Manager");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
         jPanel1.add(sistems1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
-        jPanel1.add(sistems2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+        jPanel1.add(DLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
         jLabel2.setText("Desarrolladores");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
@@ -203,6 +235,37 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_sinDLCActionPerformed
 
+    private void NarrativaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_NarrativaStateChanged
+        
+        if(ContadorSpinner.getNarrative()<Integer.valueOf(Narrativa.getValue().toString())){
+            if(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].resume();
+            ContadorSpinner.setNarrative(ContadorSpinner.getNarrative()+1);
+                System.out.println("hola");
+                System.out.println(ContadorSpinner.getNarrative());
+            }else {
+                   NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].start();
+                ContadorSpinner.setNarrative(ContadorSpinner.getNarrative()+1);
+                System.out.println(ContadorSpinner.getNarrative());
+            }
+            
+
+        }else{
+            
+     
+            
+            NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].suspend();
+            System.out.println(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState());
+            ContadorSpinner.setNarrative(ContadorSpinner.getNarrative()-1);
+            System.out.println(ContadorSpinner.getNarrative());
+            
+        }
+    
+    
+        
+              
+    }//GEN-LAST:event_NarrativaStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -236,7 +299,7 @@ public class Interfaz extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz( drive,mutex,recursos).setVisible(true);
+                new Interfaz( drive,mutex,recursos, NarrativaDevelopers ,ContadorSpinner).setVisible(true);
                 
                 
                 
@@ -245,6 +308,7 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner DLC;
     private javax.swing.JTextField EstadoPM;
     private javax.swing.JSpinner Levels;
     private javax.swing.JSpinner Narrativa;
@@ -274,6 +338,5 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField sinDLC;
     private javax.swing.JSpinner sistems;
     private javax.swing.JSpinner sistems1;
-    private javax.swing.JSpinner sistems2;
     // End of variables declaration//GEN-END:variables
 }
