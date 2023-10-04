@@ -80,6 +80,8 @@ public class Recursos {
     }else if ((type==4)){
 
                setSueldoEmpleados(getSueldoEmpleados()+17);
+    }else if((type==5)){
+               setSueldoEmpleados((getSueldoEmpleados()+25));
     }
     }
 

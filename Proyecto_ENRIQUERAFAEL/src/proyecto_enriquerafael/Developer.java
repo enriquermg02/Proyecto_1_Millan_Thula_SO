@@ -24,6 +24,7 @@ public class Developer extends Thread {
     private Drive drive;
     private Recursos recursos;
     static Semaphore mutex;
+    private int contadorDLC;
     
     public Developer (int type, float pp, Drive drive, Semaphore m,Recursos recursos){
         this.type = type;
@@ -63,9 +64,33 @@ public class Developer extends Thread {
             
             try {
                  // sección critica
-                if (type==7){
+                if (type==6){
                     System.out.println("hola coca cola");
-                }else{
+                }
+                else if(type==5){
+                    if(this.contadorDLC >= 5){
+                        if((this.drive.getNarrative() >= 2) && (this.drive.getLevels() >= 1) 
+                            && (this.drive.getSprite()>=4) && (this.drive.getSistem()>=4) && (this.drive.getDLC()>=2)){
+                        this.drive.setJuegosDLC(this.drive.getJuegosDLC()+1);
+                        this.drive.setLevels(this.drive.getLevels()-1);
+                        this.drive.setNarrative(this.drive.getNarrative()-2);
+                        this.drive.setSistem(this.drive.getSistem()-4);
+                        this.drive.setSprite(this.drive.getSprite()-4);
+                        this.contadorDLC = 0;
+                            }
+                    }else{
+                        if((this.drive.getNarrative() >= 2) && (this.drive.getLevels() >= 1) 
+                                && (this.drive.getSprite()>=4) && (this.drive.getSistem()>=4)){
+                        this.drive.setJuegos(this.drive.getJuegos()+1);
+                        this.drive.setLevels(this.drive.getLevels()-1);
+                        this.drive.setNarrative(this.drive.getNarrative()-2);
+                        this.drive.setSistem(this.drive.getSistem()-4);
+                        this.drive.setSprite(this.drive.getSprite()-4);
+                        this.contadorDLC += 1;
+                            }
+                        }
+                    }
+                else{
                 this.mutex.acquire(1);
                 
                 this.drive.addProduct( type);

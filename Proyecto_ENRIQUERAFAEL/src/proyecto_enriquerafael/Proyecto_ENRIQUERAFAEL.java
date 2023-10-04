@@ -21,30 +21,32 @@ public class Proyecto_ENRIQUERAFAEL {
      */
     public static void main(String[] args) {
      
+
         
         Semaphore mutex = new Semaphore(1);
+        //Area Nintendo//
         Recursos recursosnintendo= new Recursos(0,0,14,0,0);
         Drive drive = new Drive(0,0,0,0,0,0,0);
-        ContadorProvisional ContadorSpinner = new ContadorProvisional();
-
-        Thread NarrativaDevelopers []= new Thread[20];
-        System.out.println(NarrativaDevelopers[3]);
-//        for (int i = 0; i < 19; i++) {
-//           Developer nuevo = new Developer(1, 1, drive,mutex,recursos);
-//             NarrativaDevelopers[i]=nuevo; 
-//        }
-         Developer hola[]= new Developer[20];    
-       
-       Interfaz inter= new Interfaz(drive,mutex,recursosnintendo,NarrativaDevelopers,ContadorSpinner);
-        
-        inter.setVisible(true);
-        
-
-        Integradores inte = new Integradores(0.5f, drive, mutex, recursosnintendo);
-        inte.start();
-        
-        Compania nintendo =new Compania (inter,drive,recursosnintendo,mutex );
+        ContadorProvisional ContadorN = new ContadorProvisional();
+        Thread DevelopersN []= new Thread[20];
+        Interfaz interN = new Interfaz(drive,mutex,recursosnintendo,DevelopersN,ContadorN);
+        Compania nintendo =new Compania (interN, mutex );
         nintendo.fundar();
+        //Fin//
+        //Area Bethesda//
+        Recursos recursosB = new Recursos(0,0,14,0,0);
+        Drive driveB = new Drive(0,0,0,0,0,0,0);
+        ContadorProvisional ContadorB = new ContadorProvisional();
+        Thread NarrativaB []= new Thread[20];
+        InterfazB interB = new InterfazB(driveB, mutex, recursosB, NarrativaB, ContadorB);
+        CompaniaB bethesda =new CompaniaB (interB ,mutex );
+        nintendo.fundar();
+        //
+        
+        InterfazG interG = new InterfazG(interN, interB);
+        interG.setVisible(true);
+        
+        
 
 }
     

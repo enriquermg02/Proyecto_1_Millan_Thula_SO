@@ -10,10 +10,10 @@ import java.util.concurrent.Semaphore;
  *
  * @author enriq
  */
-public class Compania {
+public class CompaniaB {
     
     
-    Interfaz inter;
+    InterfazB inter;
     
     Thread trabajadores [];
     
@@ -23,7 +23,7 @@ public class Compania {
     
     Semaphore mutex ;
 
-    public Compania(Interfaz inter, Semaphore mutex) {
+    public CompaniaB(InterfazB inter, Semaphore mutex) {
         this.inter = inter;
         
         this.trabajadores = new Thread[12];
@@ -33,11 +33,11 @@ public class Compania {
         
     }
 
-    public Interfaz getInter() {
+    public InterfazB getInter() {
         return inter;
     }
 
-    public void setInter(Interfaz inter) {
+    public void setInter(InterfazB inter) {
         this.inter = inter;
     }
 
@@ -129,7 +129,7 @@ public class Compania {
     public void Llenarlista(){
         
                 for (int i = 0; i < 12; i++) {
-           Developer nuevo = new Developer(7, 1, drive,mutex,recursos);
+           Developer nuevo = new Developer(6, 1, drive,mutex,recursos);
              trabajadores[i]=nuevo;
                     System.out.println(i);
         }
