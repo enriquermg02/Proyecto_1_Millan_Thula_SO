@@ -2,6 +2,7 @@ package proyecto_enriquerafael;
 
 import java.util.concurrent.Semaphore;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,54 +31,148 @@ public class Interfaz extends javax.swing.JFrame {
         this.recursos =recursos;
         this. NarrativaDevelopers=NarrativaDevelopers ;
         this.ContadorSpinner=ContadorSpinner;
-        Actualizar();
+//        Actualizar();
         setLocationRelativeTo(null);
 //        verificar(DLC);
 //  
  
     }
 
-    
-     public void verificar(javax.swing.JSpinner DLC){
-         
-         while(true){
+    public JSpinner getDLC() {
+        return DLC;
+    }
 
-             if (Integer.parseInt(DLC.getValue().toString())<0){
-                 DLC.setValue(1);
-             }
-         }
-         
-         
-     }
- 
-    
-    
-     public javax.swing.JTextField getTextField() {
+    public void setDLC(JSpinner DLC) {
+        this.DLC = DLC;
+    }
+
+    public JTextField getEstadoPM() {
+        return EstadoPM;
+    }
+
+    public void setEstadoPM(JTextField EstadoPM) {
+        this.EstadoPM = EstadoPM;
+    }
+
+    public JSpinner getLevels() {
+        return Levels;
+    }
+
+    public void setLevels(JSpinner Levels) {
+        this.Levels = Levels;
+    }
+
+    public JSpinner getNarrativa() {
+        return Narrativa;
+    }
+
+    public void setNarrativa(JSpinner Narrativa) {
+        this.Narrativa = Narrativa;
+    }
+
+    public JTextField getTexto0() {
         return Texto0;
     }
 
-
-     
-  
-     
-     
-     
-     public void projectmanager(){
-         
-         ProjectManager lester = new ProjectManager(recursos,EstadoPM);
-
-         lester.start();
-         
-     }
-     
-    
-    public void Actualizar(){
-        
-        HilosGui actu = new HilosGui(drive,Texto0,Texto1,Texto2,Texto3,Texto4,sinDLC,conDLC);
-        actu.start();
-     
+    public void setTexto0(JTextField Texto0) {
+        this.Texto0 = Texto0;
     }
+
+    public JTextField getTexto1() {
+        return Texto1;
+    }
+
+    public void setTexto1(JTextField Texto1) {
+        this.Texto1 = Texto1;
+    }
+
+    public JTextField getTexto2() {
+        return Texto2;
+    }
+
+    public void setTexto2(JTextField Texto2) {
+        this.Texto2 = Texto2;
+    }
+
+    public JTextField getTexto3() {
+        return Texto3;
+    }
+
+    public void setTexto3(JTextField Texto3) {
+        this.Texto3 = Texto3;
+    }
+
+    public JTextField getTexto4() {
+        return Texto4;
+    }
+
+    public void setTexto4(JTextField Texto4) {
+        this.Texto4 = Texto4;
+    }
+
+    public JTextField getConDLC() {
+        return conDLC;
+    }
+
+    public void setConDLC(JTextField conDLC) {
+        this.conDLC = conDLC;
+    }
+
+    public JTextField getSinDLC() {
+        return sinDLC;
+    }
+
+    public void setSinDLC(JTextField sinDLC) {
+        this.sinDLC = sinDLC;
+    }
+
     
+ 
+    
+   
+    
+    
+    
+//     public void verificar(javax.swing.JSpinner DLC){
+//         
+//         while(true){
+//
+//             if (Integer.parseInt(DLC.getValue().toString())<0){
+//                 DLC.setValue(1);
+//             }
+//         }
+//         
+//         
+//     }
+// 
+//    
+//    
+//     public javax.swing.JTextField getTextField() {
+//        return Texto0;
+//    }
+//
+//
+//     
+//  
+//     
+//     
+//     
+//     public void projectmanager(){
+//         
+//         ProjectManager lester = new ProjectManager(recursos,EstadoPM);
+//
+//         lester.start();
+//         
+//     }
+//     
+//    
+//    public void Actualizar(){
+//        
+//        HilosGui actu = new HilosGui(drive,Texto0,Texto1,Texto2,Texto3,Texto4,sinDLC,conDLC);
+//        actu.start();
+//     
+//    }
+//    
 
     
 
@@ -106,7 +201,7 @@ public class Interfaz extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         EstadoPM = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        sistems1 = new javax.swing.JSpinner();
+        Integradores = new javax.swing.JSpinner();
         DLC = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -125,10 +220,32 @@ public class Interfaz extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(Levels, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
-        jPanel1.add(Sprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
-        jPanel1.add(sistems, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
 
+        Levels.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        Levels.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                LevelsStateChanged(evt);
+            }
+        });
+        jPanel1.add(Levels, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+
+        Sprites.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        Sprites.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                SpritesStateChanged(evt);
+            }
+        });
+        jPanel1.add(Sprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+
+        sistems.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        sistems.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sistemsStateChanged(evt);
+            }
+        });
+        jPanel1.add(sistems, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+
+        Narrativa.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
         Narrativa.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 NarrativaStateChanged(evt);
@@ -173,7 +290,21 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel1.setText("Project Manager");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
-        jPanel1.add(sistems1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+
+        Integradores.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        Integradores.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                IntegradoresStateChanged(evt);
+            }
+        });
+        jPanel1.add(Integradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
+
+        DLC.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        DLC.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                DLCStateChanged(evt);
+            }
+        });
         jPanel1.add(DLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
         jLabel2.setText("Desarrolladores");
@@ -236,35 +367,77 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_sinDLCActionPerformed
 
     private void NarrativaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_NarrativaStateChanged
-        
-        if(ContadorSpinner.getNarrative()<Integer.valueOf(Narrativa.getValue().toString())){
-            if(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
-                NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].resume();
-            ContadorSpinner.setNarrative(ContadorSpinner.getNarrative()+1);
-                System.out.println("hola");
-                System.out.println(ContadorSpinner.getNarrative());
-            }else {
-                   NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].start();
-                ContadorSpinner.setNarrative(ContadorSpinner.getNarrative()+1);
-                System.out.println(ContadorSpinner.getNarrative());
-            }
-            
-
-        }else{
-            
-     
-            
-            NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].suspend();
-            System.out.println(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState());
-            ContadorSpinner.setNarrative(ContadorSpinner.getNarrative()-1);
-            System.out.println(ContadorSpinner.getNarrative());
-            
+    
+        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
+            Narrativa.setValue(12);
         }
-    
-    
+        
+//        if(ContadorSpinner.getNarrative()<Integer.valueOf(Narrativa.getValue().toString())){
+//            if(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+//                NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].resume();
+//            ContadorSpinner.setNarrative(ContadorSpinner.getNarrative()+1);
+//                System.out.println("hola");
+//                System.out.println(ContadorSpinner.getNarrative());
+//            }else {
+//                   NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].start();
+//                ContadorSpinner.setNarrative(ContadorSpinner.getNarrative()+1);
+//                System.out.println(ContadorSpinner.getNarrative());
+//            }
+//            
+//
+//        }else{
+//            
+//     
+//            
+//            NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].suspend();
+//            System.out.println(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState());
+//            ContadorSpinner.setNarrative(ContadorSpinner.getNarrative()-1);
+//            System.out.println(ContadorSpinner.getNarrative());
+//            
+//        }
+//    
+//    
         
               
     }//GEN-LAST:event_NarrativaStateChanged
+
+    private void LevelsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_LevelsStateChanged
+        // TODO add your handling code here:
+        
+        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
+            Levels.setValue(12);
+        }
+    }//GEN-LAST:event_LevelsStateChanged
+
+    private void SpritesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpritesStateChanged
+if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
+            Sprites.setValue(12);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SpritesStateChanged
+
+    private void sistemsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sistemsStateChanged
+        // TODO add your handling code here:
+        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
+            sistems.setValue(12);
+        }
+    }//GEN-LAST:event_sistemsStateChanged
+
+    private void DLCStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_DLCStateChanged
+        // TODO add your handling code here:
+        
+        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
+            DLC.setValue(12);
+        }
+    }//GEN-LAST:event_DLCStateChanged
+
+    private void IntegradoresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_IntegradoresStateChanged
+        // TODO add your handling code here:
+        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
+            Integradores.setValue(12);
+        }
+    }//GEN-LAST:event_IntegradoresStateChanged
 
     /**
      * @param args the command line arguments
@@ -310,6 +483,7 @@ public class Interfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner DLC;
     private javax.swing.JTextField EstadoPM;
+    private javax.swing.JSpinner Integradores;
     private javax.swing.JSpinner Levels;
     private javax.swing.JSpinner Narrativa;
     private javax.swing.JSpinner Sprites;
@@ -337,6 +511,5 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField sinDLC;
     private javax.swing.JSpinner sistems;
-    private javax.swing.JSpinner sistems1;
     // End of variables declaration//GEN-END:variables
 }

@@ -64,28 +64,23 @@ public class Recursos {
         if((type == 0)){
         
         setSueldoEmpleados(getSueldoEmpleados()+10);
-            System.out.println("Agregar"+type+" "+getSueldoEmpleados());
+
         
     }else if((type==1)){
         
      setSueldoEmpleados(getSueldoEmpleados()+13);
-        System.out.println("Agregar"+type+" "+getSueldoEmpleados());
+
     }else if((type==2)){
         
          setSueldoEmpleados(getSueldoEmpleados()+20);
-        System.out.println("Agregar"+type+" "+getSueldoEmpleados());
+
     }else if ((type==3)){
            setSueldoEmpleados(getSueldoEmpleados()+8);
-           System.out.println("Agregar"+type+" "+getSueldoEmpleados());
+
     }else if ((type==4)){
 
                setSueldoEmpleados(getSueldoEmpleados()+17);
-               System.out.println("Agregar"+type+" "+getSueldoEmpleados());
- 
-    
     }
-    
-    
     }
 
     /**

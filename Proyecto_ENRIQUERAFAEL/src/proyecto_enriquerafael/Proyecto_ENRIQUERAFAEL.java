@@ -22,46 +22,29 @@ public class Proyecto_ENRIQUERAFAEL {
     public static void main(String[] args) {
      
         
-         Semaphore mutex = new Semaphore(1);
-        Recursos recursos= new Recursos(0,0,14,0,0);
-        // TODO code application logic here
+        Semaphore mutex = new Semaphore(1);
+        Recursos recursosnintendo= new Recursos(0,0,14,0,0);
         Drive drive = new Drive(0,0,0,0,0,0,0);
         ContadorProvisional ContadorSpinner = new ContadorProvisional();
-        
-        
-        
-        
-        //LISTA PARA LA MODIFICACION DE LOS THREADS
+
         Thread NarrativaDevelopers []= new Thread[20];
-        Thread LevelsDevelopers []= new Thread[20];
-        Thread SpriteDevelopers []= new Thread[20];
-        Thread SistemDevelopers []= new Thread[20];
-        Thread DLCDevelopers []= new Thread[20];
-        
-        
-        for (int i = 0; i < 19; i++) {
-           Developer nuevo = new Developer(1, 1, drive,mutex,recursos);
-             NarrativaDevelopers[i]=nuevo; 
-        }
-             
+        System.out.println(NarrativaDevelopers[3]);
+//        for (int i = 0; i < 19; i++) {
+//           Developer nuevo = new Developer(1, 1, drive,mutex,recursos);
+//             NarrativaDevelopers[i]=nuevo; 
+//        }
+         Developer hola[]= new Developer[20];    
        
-       Interfaz inter= new Interfaz(drive,mutex,recursos,NarrativaDevelopers,ContadorSpinner);
+       Interfaz inter= new Interfaz(drive,mutex,recursosnintendo,NarrativaDevelopers,ContadorSpinner);
         
         inter.setVisible(true);
         
-//        Developer dev1 = new Developer(0, 0.25f, drive,mutex,recursos);
-//        dev1.start();
-//        Developer dev2 = new Developer(1, 1, drive,mutex,recursos);
-//        dev2.start();
-//        Developer dev3 = new Developer(2, 0.34f, drive,mutex,recursos);
-//        dev3.start();
-//        Developer dev4 = new Developer(3, 0.25f, drive,mutex,recursos);
-//        dev4.start();
-////      Developer dev1 = new Developer(0, 0.25f, drive,mutex);
-//        Developer dev5 = new Developer(4, 1, drive,mutex,recursos);
-//        dev5.start();
-        Integradores inte = new Integradores(0.5f, drive, mutex, recursos);
+
+        Integradores inte = new Integradores(0.5f, drive, mutex, recursosnintendo);
         inte.start();
+        
+        Compania nintendo =new Compania (inter,drive,recursosnintendo,mutex );
+        nintendo.fundar();
 
 }
     

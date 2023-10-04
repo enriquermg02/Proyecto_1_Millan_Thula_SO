@@ -63,13 +63,16 @@ public class Developer extends Thread {
             
             try {
                  // sección critica
-                
+                if (type==7){
+                    System.out.println("hola coca cola");
+                }else{
                 this.mutex.acquire(1);
                 
                 this.drive.addProduct( type);
-                
+                this.recursos.agregar(type);
                 this.acc=0;
                 this.mutex.release();
+                }
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Developer.class.getName()).log(Level.SEVERE, null, ex);

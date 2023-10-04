@@ -108,11 +108,11 @@ public class Drive {
         
         setSprite(getSprite()+1);
         
-    }else if ((type==3)&&(getSprite()<35)){
+    }else if ((type==3)&&(getSistem()<35)){
         
         setSistem(getSistem()+5);
         
-    }else if ((type==4)&&(getSprite()<10)){
+    }else if ((type==4)&&(getDLC()<10)){
         
         setDLC(getDLC()+1);
         
