@@ -21,7 +21,17 @@ public class Proyecto_ENRIQUERAFAEL {
      */
     public static void main(String[] args) {
      
-
+        Developer enrique[]= new Developer [12];
+        
+        
+         
+        
+        
+        
+        
+        
+        
+        
         
         Semaphore mutex = new Semaphore(1);
         //Area Nintendo//
@@ -29,7 +39,7 @@ public class Proyecto_ENRIQUERAFAEL {
         Drive drive = new Drive(0,0,0,0,0,0,0);
         ContadorProvisional ContadorN = new ContadorProvisional();
         Thread DevelopersN []= new Thread[20];
-        Interfaz interN = new Interfaz(drive,mutex,recursosnintendo,DevelopersN,ContadorN);
+        Interfaz interN = new Interfaz(drive,mutex,recursosnintendo,DevelopersN,ContadorN,enrique);
         Compania nintendo =new Compania (interN, mutex );
         nintendo.fundar();
         //Fin//
@@ -46,8 +56,14 @@ public class Proyecto_ENRIQUERAFAEL {
         InterfazG interG = new InterfazG(interN, interB);
         interG.setVisible(true);
         
+        for (int i = 0; i< 11; i++) {
+               enrique[i] =new Developer(6, 0.25f, drive, mutex, recursosnintendo);
+               
+               
+              
+            }
+       
         
-
 }
     
   

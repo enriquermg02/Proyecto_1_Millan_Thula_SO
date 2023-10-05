@@ -15,6 +15,9 @@ public class ContadorProvisional {
         public int sprite;
         public int sistem;
         public int DLC;
+        public int indice;
+        int Developers[];
+        
  
 
     public ContadorProvisional() {
@@ -23,7 +26,9 @@ public class ContadorProvisional {
         this.sprite = 0;
         this.sistem = 0;
         this.DLC = 0;
-
+        this.Developers=new int[6];
+        this.indice=0;
+        llenar();
     }
 
     public int getLevels() {
@@ -65,7 +70,47 @@ public class ContadorProvisional {
     public void setDLC(int DLC) {
         this.DLC = DLC;
     }
+
+    public int[] getDevelopers() {
+        return Developers;
+    }
+
+    public void setDevelopers(int[] Developers) {
+        this.Developers = Developers;
+    }
+
+    public int getIndice() {
+        return indice;
+    }
+
+    public void setIndice(int indice) {
+        this.indice = indice;
+    }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+       public void llenar(){
+       //narrativa
+      Developers[0]=1;
+      //levels
+      Developers[1]=1;
+      //sprites
+      Developers[2]=1;
+      //sistems
+      Developers[3]=1;
+      //dlc
+      Developers[4]=1;
+      //integradores
+      Developers[5]=1;
+   
+  
+    }
     
 }

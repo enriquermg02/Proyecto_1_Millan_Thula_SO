@@ -38,7 +38,9 @@ public class Director extends Thread{
                     if (trabajando == 0) {
                         this.recursos.setFaltas(this.recursos.getFaltas()+1);
                     }
+                  sleep(6);
                 }
+                
                 this.recursos.setDias(this.recursos.getDias()-1);
                 }
             }

@@ -14,6 +14,7 @@ public class Recursos {
     private int Dias;
     private int dineroProducido;
     private int faltas;
+ 
 
     public Recursos(int SueldoEmpleados, int SueldoProjectManager,int dias, int dineroProducido, int faltas) {
         this.SueldoEmpleados = SueldoEmpleados;
@@ -21,6 +22,7 @@ public class Recursos {
         this.Dias=dias;
         this.dineroProducido = dineroProducido;
         this.faltas = faltas;
+        
     }
 
     public int getSueldoEmpleados() {
@@ -112,4 +114,8 @@ public class Recursos {
     public void setFaltas(int faltas) {
         this.faltas = faltas;
     }
+    
+    
+    
+   
 }

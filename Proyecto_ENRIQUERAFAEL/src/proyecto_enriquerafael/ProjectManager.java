@@ -50,10 +50,10 @@ public class ProjectManager extends Thread{
                    
             for (int i = 0; i < 32; i++) {
             if (trabajando==1){
-                 System.out.println(this.getTrabajando());
+                 
                 setTrabajando(0);
             }else{
-                 System.out.println(this.getTrabajando());
+                 
                 setTrabajando(1);
                 
             }
@@ -62,7 +62,7 @@ public class ProjectManager extends Thread{
             }
                     setTrabajando(1);
                     recursos.setDias(recursos.getDias()-1);
-                    System.out.println(recursos.getDias());
+                    
                     sleep(334);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);

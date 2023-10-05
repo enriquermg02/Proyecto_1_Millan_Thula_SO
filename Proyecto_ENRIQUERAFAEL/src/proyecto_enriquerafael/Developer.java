@@ -36,6 +36,20 @@ public class Developer extends Thread {
         
     }
 
+    
+    
+    
+    
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+  
+    
+
     @Override
     public void run() {
         while(true) {
@@ -65,7 +79,7 @@ public class Developer extends Thread {
             try {
                  // sección critica
                 if (type==6){
-                    System.out.println("hola coca cola");
+//                    System.out.println("hola coca cola");
                 }
                 else if(type==5){
                     if(this.contadorDLC >= 5){

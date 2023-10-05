@@ -15,7 +15,9 @@ public class Compania {
     
     Interfaz inter;
     
-    Thread trabajadores [];
+    int Developers[];
+    
+ 
     
     Drive drive;
     
@@ -26,10 +28,11 @@ public class Compania {
     public Compania(Interfaz inter, Semaphore mutex) {
         this.inter = inter;
         
-        this.trabajadores = new Thread[12];
+        
         this.drive = new Drive(0,0,0,0,0,0,0);
         this.recursos = new Recursos(0,0,0,0,0);
         this.mutex=mutex;
+        this.Developers=new int[5];
         
     }
 
@@ -41,15 +44,7 @@ public class Compania {
         this.inter = inter;
     }
 
-    public Thread[] getTrabajadores() {
-        return trabajadores;
-    }
 
-    public void setTrabajadores(Thread[] trabajadores) {
-        this.trabajadores = trabajadores;
-    }
-
- 
 
 
 
@@ -86,8 +81,7 @@ public class Compania {
         
         Actualizar();
         crearhilosfijos();
-        Llenarlista();
-        
+//       perrogato();
         
         
         
@@ -95,6 +89,7 @@ public class Compania {
         
     }
     
+ 
     
       public void Actualizar(){
         
@@ -116,54 +111,30 @@ public class Compania {
         dev4.start();
         Developer dev5 = new Developer(4, 0.5f, drive,mutex,recursos);
         dev5.start();
-        Developer inte1 = new Developer(5, 0.25f, drive, mutex, recursos);
-        inte1.start();
+//        Developer inte1 = new Developer(5, 0.25f, drive, mutex, recursos);
+//        inte1.start();
         
         
         
     }
     
     
-    
-    
-    public void Llenarlista(){
+     public void perrogato(){
+         Director director=new Director(recursos);
+         director.start();
+         ProjectManager pj=new ProjectManager(recursos,inter.getEstadoPM());
+         pj.start();
+
+}   
         
-                for (int i = 0; i < 12; i++) {
-           Developer nuevo = new Developer(7, 1, drive,mutex,recursos);
-             trabajadores[i]=nuevo;
-                    System.out.println(i);
-        }
-        
-    }
-    
-    
-    
-    public void dios(){
-        
-        
-        
+
         
         
     }
+
+
+
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
+ 
+
