@@ -41,6 +41,8 @@ public final class InterfazG extends javax.swing.JFrame {
         initComponents();
         this.loadSetDaysJson();
         this.loadSetEmployeesJson();
+//        System.out.println("hola");
+//        System.out.println(interN.ContadorSpinner.sistem);
         this.segundos.setText(Integer.toString(recursosN.getDayDuration()));
         this.dias.setText(Integer.toString(recursosN.getDias()));
         nintendo.fundar();
@@ -131,6 +133,7 @@ public final class InterfazG extends javax.swing.JFrame {
         int daysForDeliveryB = Integer.parseInt(this.dias.getText());
         
         //Nintendo
+        System.out.println(interN.ContadorSpinner.sistem);
        int narrativaN = interN.ContadorSpinner.narrative;
        int nivelesN = interN.ContadorSpinner.levels;
        int spriteN = interN.ContadorSpinner.sprite;

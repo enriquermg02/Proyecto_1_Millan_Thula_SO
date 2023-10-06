@@ -26,12 +26,13 @@ public final class Interfaz extends javax.swing.JFrame {
    
     
     public Interfaz(Drive drive,Semaphore mutex,Recursos recursos,Thread NarrativaDevelopers [],
-        ContadorProvisional ContadorSpinner) {
+        ContadorProvisional ContadorN) {
         initComponents();
+        System.out.println(ContadorN.levels);
         this.drive=drive;
         this.mutex= mutex;
         this.recursos =recursos;
-        this.ContadorSpinner=ContadorSpinner;
+        this.ContadorSpinner = ContadorN;
         contador=0;
         this.med=true;
         
@@ -593,9 +594,6 @@ public final class Interfaz extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
-        
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 //                new Interfaz( drive,mutex,recursos, trabajadores ,ContadorSpinner,enrique).setVisible(true);
