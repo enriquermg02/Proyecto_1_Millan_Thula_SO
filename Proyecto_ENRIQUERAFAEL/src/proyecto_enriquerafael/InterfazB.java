@@ -15,11 +15,11 @@ import javax.swing.JTextField;
  */
 public class InterfazB extends javax.swing.JFrame {
     
-    static Thread NarrativaDevelopers [];
-    static Drive drive;
-    static Semaphore mutex;
-    static Recursos recursos;
-    static ContadorProvisional ContadorSpinner;
+     Thread NarrativaDevelopers [];
+     Drive drive;
+     Semaphore mutex;
+     Recursos recursos;
+     ContadorProvisional ContadorSpinner;
     
     public InterfazB(Drive drive,Semaphore mutex,Recursos recursos,Thread NarrativaDevelopers [],
             ContadorProvisional ContadorSpinner) {
@@ -470,7 +470,7 @@ if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getVal
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazB( drive,mutex,recursos, NarrativaDevelopers ,ContadorSpinner).setVisible(true);
+//                new InterfazB( drive,mutex,recursos, NarrativaDevelopers ,ContadorSpinner).setVisible(true);
                 
                 
                 

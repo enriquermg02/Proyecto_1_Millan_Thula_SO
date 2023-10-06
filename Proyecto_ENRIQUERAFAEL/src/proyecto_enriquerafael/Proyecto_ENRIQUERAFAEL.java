@@ -19,52 +19,11 @@ public class Proyecto_ENRIQUERAFAEL {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-     
-        Developer enrique[]= new Developer [12];
-        
-        
-         
-        
-        
-        
-        
-        
-        
-        
-        
-        Semaphore mutex = new Semaphore(1);
-        //Area Nintendo//
-        Recursos recursosnintendo= new Recursos(0,0,14,0,0);
-        Drive drive = new Drive(0,0,0,0,0,0,0);
-        ContadorProvisional ContadorN = new ContadorProvisional();
-        Thread DevelopersN []= new Thread[20];
-        Interfaz interN = new Interfaz(drive,mutex,recursosnintendo,DevelopersN,ContadorN,enrique);
-        Compania nintendo =new Compania (interN, mutex );
-        nintendo.fundar();
-        //Fin//
-        //Area Bethesda//
-        Recursos recursosB = new Recursos(0,0,14,0,0);
-        Drive driveB = new Drive(0,0,0,0,0,0,0);
-        ContadorProvisional ContadorB = new ContadorProvisional();
-        Thread NarrativaB []= new Thread[20];
-        InterfazB interB = new InterfazB(driveB, mutex, recursosB, NarrativaB, ContadorB);
-        CompaniaB bethesda =new CompaniaB (interB ,mutex );
-        nintendo.fundar();
-        //
-        
-        InterfazG interG = new InterfazG(interN, interB);
+    public static void main(String[] args) {                
+                 
+        InterfazG interG = new InterfazG();
         interG.setVisible(true);
         
-        for (int i = 0; i< 11; i++) {
-               enrique[i] =new Developer(6, 0.25f, drive, mutex, recursosnintendo);
-               
-               
-              
-            }
-       
-        
-}
-    
-  
+             
+    } 
 }

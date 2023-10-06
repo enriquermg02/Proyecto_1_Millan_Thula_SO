@@ -15,17 +15,19 @@ public class ContadorProvisional {
         public int sprite;
         public int sistem;
         public int DLC;
+        public int integrador;
         public int indice;
         int Developers[];
         
  
 
     public ContadorProvisional() {
-        this.levels = 0;
-        this.narrative = 0;
-        this.sprite = 0;
-        this.sistem = 0;
-        this.DLC = 0;
+        this.levels = 3;
+        this.narrative = 1;
+        this.sprite = 1;
+        this.sistem = 1;
+        this.DLC = 1;
+        this.integrador = 1;
         this.Developers=new int[6];
         this.indice=0;
         llenar();
@@ -86,9 +88,14 @@ public class ContadorProvisional {
     public void setIndice(int indice) {
         this.indice = indice;
     }
-    
-    
-    
+
+    public int getIntegrador() {
+        return integrador;
+    }
+
+     public void setIntegrador(int integrador) {
+        this.integrador = integrador;
+    }
     
     
     

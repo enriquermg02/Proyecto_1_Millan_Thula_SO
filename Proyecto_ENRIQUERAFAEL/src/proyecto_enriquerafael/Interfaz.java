@@ -13,61 +13,45 @@ import javax.swing.JTextField;
  *
  * @author enriq
  */
-public class Interfaz extends javax.swing.JFrame {
+public final class Interfaz extends javax.swing.JFrame {
     
-    static Developer trabajadores [];
-    static Drive drive;
-    static Semaphore mutex;
-    static Recursos recursos;
-    static ContadorProvisional ContadorSpinner;
-    static Developer enrique[];
+     public Developer trabajadores [];
+     public Drive drive;
+     public Semaphore mutex;
+     public Recursos recursos;
+     public ContadorProvisional ContadorSpinner;
     int contador;
      boolean med;
 
    
     
     public Interfaz(Drive drive,Semaphore mutex,Recursos recursos,Thread NarrativaDevelopers [],
-            ContadorProvisional ContadorSpinner, Developer enrique[]) {
+        ContadorProvisional ContadorSpinner) {
         initComponents();
         this.drive=drive;
         this.mutex= mutex;
         this.recursos =recursos;
-        this. enrique=enrique;
         this.ContadorSpinner=ContadorSpinner;
         contador=0;
         this.med=true;
         
-//        Llenarlista();
-//         hola();
+
       
 //        Actualizar();
+        PonerTrabajadores();
         setLocationRelativeTo(null);
-//        verificar(DLC);
-//  
  
+    }
+    
+    public void PonerTrabajadores(){
+        this.Narrativa.setValue(ContadorSpinner.narrative);
+        this.Levels.setValue(ContadorSpinner.levels);
+        this.Sprites.setValue(ContadorSpinner.sprite);
+        this.DLC.setValue(ContadorSpinner.DLC);
+        this.Integradores.setValue(ContadorSpinner.integrador);
     }
 
 
-
-//            public void Llenarlista(){
-//            
-//  
-//            for (int i = 0; i< 11; i++) {
-//               trabajadores[i] =new Developer(0, 0.25f, drive, mutex, recursos);
-//               
-//               trabajadores[i].start();
-//            
-//               
-//            }
-//            
-//            
-//            
-//        }
-            
-          public void hola(){
-              System.out.println(enrique[0].getState());
-          }
-    
     
     public JSpinner getDLC() {
         return DLC;
@@ -157,6 +141,7 @@ public class Interfaz extends javax.swing.JFrame {
         this.sinDLC = sinDLC;
     }
 
+    
          
     
    
@@ -424,32 +409,8 @@ public class Interfaz extends javax.swing.JFrame {
          
         }
         
-//        
-//    
-//        
-//        enrique[0].start();
-//        
-//   
-////     
-////        trabajadores[contador].setType(0);
-//          contador++;
-//        
-      
-  
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+         
         
         
 //        if(ContadorSpinner.getNarrative()<Integer.valueOf(Narrativa.getValue().toString())){
@@ -637,7 +598,7 @@ public class Interfaz extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz( drive,mutex,recursos, trabajadores ,ContadorSpinner,enrique).setVisible(true);
+//                new Interfaz( drive,mutex,recursos, trabajadores ,ContadorSpinner,enrique).setVisible(true);
                 
                 
                 

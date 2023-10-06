@@ -23,12 +23,12 @@ public class CompaniaB {
     
     Semaphore mutex ;
 
-    public CompaniaB(InterfazB inter, Semaphore mutex) {
+    public CompaniaB(InterfazB inter, Semaphore mutex, Recursos recursosB, Drive driveB) {
         this.inter = inter;
         
         this.trabajadores = new Thread[12];
-        this.drive = new Drive(0,0,0,0,0,0,0);
-        this.recursos = new Recursos(0,0,0,0,0);
+        this.drive = driveB;
+        this.recursos = recursosB;
         this.mutex=mutex;
         
     }

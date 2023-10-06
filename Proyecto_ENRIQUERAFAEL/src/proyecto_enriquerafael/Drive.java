@@ -16,8 +16,9 @@ public class Drive {
     public int DLC;
     public int juegos; 
     public int juegosDLC;
+    private int contador;
 
-    public Drive(int levels, int narrative, int sprite, int sistem, int DLC, int juegos, int juegosDLC) {
+    public Drive(int levels, int narrative, int sprite, int sistem, int DLC, int juegos, int juegosDLC, int contador) {
         this.levels = levels;
         this.narrative = narrative;
         this.sprite = sprite;
@@ -25,6 +26,7 @@ public class Drive {
         this.DLC = DLC;
         this.juegos = juegos;
         this.juegosDLC = juegosDLC;
+        this.contador = contador;
     }
 
     public int getDLC() {
@@ -94,6 +96,7 @@ public class Drive {
 //        artistas
 //        logica
 //        desarrollador de DLC
+//        juego
         
    
     if((type == 0)&& (getNarrative()<25)){
@@ -116,8 +119,31 @@ public class Drive {
         
         setDLC(getDLC()+1);
         
-    
     }
+    else if((type==5)&&(getContador()<5)){
+                if((getNarrative() >= 2) && (getLevels() >= 1) 
+             && (getSprite()>=4) && (getSistem()>=4) && (getDLC()>=2)){
+            setJuegos(getJuegos()+1);
+            setLevels(getLevels()-1);
+            setNarrative(getNarrative()-2);
+            setSistem(getSistem()-4);
+            setSprite(getSprite()-4);
+            setContador(getContador()+1);
+                            }    
+    }
+    else if ((type==5)&&(getContador()==5)){
+        if((getNarrative() >= 2) && (getLevels() >= 1) 
+             && (getSprite()>=4) && (getSistem()>=4) && (getDLC()>=2)){
+            setJuegosDLC(getJuegosDLC()+1);
+            setLevels(getLevels()-1);
+            setNarrative(getNarrative()-2);
+            setSistem(getSistem()-4);
+            setSprite(getSprite()-4);
+            setContador(0);
+
+                            }      
+    }
+
 }
 
     /**
@@ -132,6 +158,20 @@ public class Drive {
      */
     public void setJuegosDLC(int juegosDLC) {
         this.juegosDLC = juegosDLC;
+    }
+
+    /**
+     * @return the contador
+     */
+    public int getContador() {
+        return contador;
+    }
+
+    /**
+     * @param contador the contador to set
+     */
+    public void setContador(int contador) {
+        this.contador = contador;
     }
     
 }

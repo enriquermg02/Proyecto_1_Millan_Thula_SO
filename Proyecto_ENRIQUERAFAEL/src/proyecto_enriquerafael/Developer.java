@@ -8,7 +8,7 @@ import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static proyecto_enriquerafael.Interfaz.drive;
+//import static proyecto_enriquerafael.Interfaz.drive;
 
 /**
  *
@@ -19,7 +19,6 @@ public class Developer extends Thread {
     static javax.swing.JTextField Texto0;
     private int type;
     private float productionPerDay;
-    private int dayDuration = 1000;
     private float acc = 0;
     private Drive drive;
     private Recursos recursos;
@@ -57,7 +56,9 @@ public class Developer extends Thread {
             try {
                 
                 Work();
-                sleep(dayDuration);
+                sleep(recursos.getDayDuration());
+
+
                 
                 
                 
@@ -81,29 +82,7 @@ public class Developer extends Thread {
                 if (type==6){
 //                    System.out.println("hola coca cola");
                 }
-                else if(type==5){
-                    if(this.contadorDLC >= 5){
-                        if((this.drive.getNarrative() >= 2) && (this.drive.getLevels() >= 1) 
-                            && (this.drive.getSprite()>=4) && (this.drive.getSistem()>=4) && (this.drive.getDLC()>=2)){
-                        this.drive.setJuegosDLC(this.drive.getJuegosDLC()+1);
-                        this.drive.setLevels(this.drive.getLevels()-1);
-                        this.drive.setNarrative(this.drive.getNarrative()-2);
-                        this.drive.setSistem(this.drive.getSistem()-4);
-                        this.drive.setSprite(this.drive.getSprite()-4);
-                        this.contadorDLC = 0;
-                            }
-                    }else{
-                        if((this.drive.getNarrative() >= 2) && (this.drive.getLevels() >= 1) 
-                                && (this.drive.getSprite()>=4) && (this.drive.getSistem()>=4)){
-                        this.drive.setJuegos(this.drive.getJuegos()+1);
-                        this.drive.setLevels(this.drive.getLevels()-1);
-                        this.drive.setNarrative(this.drive.getNarrative()-2);
-                        this.drive.setSistem(this.drive.getSistem()-4);
-                        this.drive.setSprite(this.drive.getSprite()-4);
-                        this.contadorDLC += 1;
-                            }
-                        }
-                    }
+
                 else{
                 this.mutex.acquire(1);
                 

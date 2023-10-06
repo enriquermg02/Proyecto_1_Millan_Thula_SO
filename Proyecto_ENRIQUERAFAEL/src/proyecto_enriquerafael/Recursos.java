@@ -14,14 +14,16 @@ public class Recursos {
     private int Dias;
     private int dineroProducido;
     private int faltas;
+    private int dayDuration;
  
 
-    public Recursos(int SueldoEmpleados, int SueldoProjectManager,int dias, int dineroProducido, int faltas) {
+    public Recursos(int SueldoEmpleados, int SueldoProjectManager,int dias, int dineroProducido, int faltas, int dayDuration) {
         this.SueldoEmpleados = SueldoEmpleados;
         this.SueldoProjectManager = SueldoProjectManager;
         this.Dias=dias;
         this.dineroProducido = dineroProducido;
         this.faltas = faltas;
+        this.dayDuration = dayDuration;
         
     }
 
@@ -53,13 +55,6 @@ public class Recursos {
         
         
         //FALTA AGREGAR OTRO SEMAFORO
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -113,6 +108,20 @@ public class Recursos {
      */
     public void setFaltas(int faltas) {
         this.faltas = faltas;
+    }
+
+    /**
+     * @return the dayDuration
+     */
+    public int getDayDuration() {
+        return dayDuration;
+    }
+
+    /**
+     * @param dayDuration the dayDuration to set
+     */
+    public void setDayDuration(int dayDuration) {
+        this.dayDuration = dayDuration;
     }
     
     

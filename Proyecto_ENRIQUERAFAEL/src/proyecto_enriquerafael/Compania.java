@@ -25,12 +25,12 @@ public class Compania {
     
     Semaphore mutex ;
 
-    public Compania(Interfaz inter, Semaphore mutex) {
+    public Compania(Interfaz inter, Semaphore mutex, Recursos recursosN, Drive driveN) {
         this.inter = inter;
         
         
-        this.drive = new Drive(0,0,0,0,0,0,0);
-        this.recursos = new Recursos(0,0,0,0,0);
+        this.drive = driveN;
+        this.recursos = recursosN;
         this.mutex=mutex;
         this.Developers=new int[5];
         
@@ -111,8 +111,8 @@ public class Compania {
         dev4.start();
         Developer dev5 = new Developer(4, 0.5f, drive,mutex,recursos);
         dev5.start();
-//        Developer inte1 = new Developer(5, 0.25f, drive, mutex, recursos);
-//        inte1.start();
+        Developer inte1 = new Developer(5, 0.25f, drive, mutex, recursos);
+        inte1.start();
         
         
         
