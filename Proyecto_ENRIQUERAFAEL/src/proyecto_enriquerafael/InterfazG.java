@@ -21,7 +21,7 @@ public final class InterfazG extends javax.swing.JFrame {
     
         Semaphore mutex = new Semaphore(1);
         //Area Nintendo//
-        Recursos recursosN= new Recursos(0,0,0,0,0,0);
+        Recursos recursosN= new Recursos(0,0,0,0);
         Drive drive = new Drive(0,0,0,0,0,0,0,0);
         ContadorProvisional ContadorN = new ContadorProvisional();
         Thread DevelopersN []= new Thread[20];
@@ -29,7 +29,7 @@ public final class InterfazG extends javax.swing.JFrame {
         Compania nintendo =new Compania (interN, mutex, recursosN, drive);
 //        //Fin//
 //        //Area Bethesda//
-        Recursos recursosB = new Recursos(0,0,0,0,0,0);
+        Recursos recursosB = new Recursos(0,0,0,0);
         Drive driveB = new Drive(0,0,0,0,0,0,0,0);
         ContadorProvisional ContadorB = new ContadorProvisional();
         Thread DevelopersB []= new Thread[20];
@@ -41,8 +41,6 @@ public final class InterfazG extends javax.swing.JFrame {
         initComponents();
         this.loadSetDaysJson();
         this.loadSetEmployeesJson();
-//        System.out.println("hola");
-//        System.out.println(interN.ContadorSpinner.sistem);
         this.segundos.setText(Integer.toString(recursosN.getDayDuration()));
         this.dias.setText(Integer.toString(recursosN.getDias()));
         nintendo.fundar();
@@ -75,6 +73,7 @@ public final class InterfazG extends javax.swing.JFrame {
             int dayCounter = ((Long) jsonObject.get("IntervaloEntregas")).intValue();
           
             interN.recursos.setDayDuration(dayDuration);
+            interN.recursos.setDiasSobrantes(dayCounter);
             interB.recursos.setDayDuration(dayDuration);
             interN.recursos.setDias(dayCounter);
             interB.recursos.setDias(dayCounter);
@@ -133,7 +132,6 @@ public final class InterfazG extends javax.swing.JFrame {
         int daysForDeliveryB = Integer.parseInt(this.dias.getText());
         
         //Nintendo
-        System.out.println(interN.ContadorSpinner.sistem);
        int narrativaN = interN.ContadorSpinner.narrative;
        int nivelesN = interN.ContadorSpinner.levels;
        int spriteN = interN.ContadorSpinner.sprite;

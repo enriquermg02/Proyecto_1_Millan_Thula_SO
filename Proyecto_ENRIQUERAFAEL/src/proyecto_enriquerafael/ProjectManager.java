@@ -13,34 +13,41 @@ import java.util.logging.Logger;
  */
 public class ProjectManager extends Thread{
     
-  javax.swing.JTextField EstadoPM;
-  private int trabajando;
-  private Recursos recursos;
+    javax.swing.JTextField EstadoPM;
+    javax.swing.JTextField Faltas;
+    javax.swing.JTextField Descontado;
+    private boolean trabajando;
+    private Recursos recursos;
+    private int salario;
+    private int salarioacc;
+    private int discountedSalary;
+    private int faltas;
+    private Drive drive;
   
 
-    public ProjectManager(Recursos recursos,javax.swing.JTextField EstadoPM) {
-        this.trabajando = 1;
+    public ProjectManager(Recursos recursos,javax.swing.JTextField EstadoPM, Drive drive, javax.swing.JTextField Faltas, javax.swing.JTextField Descontado) {
+        this.trabajando = false;
         this.recursos=recursos;
         this.EstadoPM=EstadoPM;
+        this.Faltas=Faltas;
+        this.Descontado=Descontado;
+        this.drive = drive;
+        
     }
 
-    public int getTrabajando() {
+    public boolean getTrabajando() {
         return trabajando;
     }
 
-    public void setTrabajando(int trabajando) {
+    public void setTrabajando(boolean trabajando) {
         this.trabajando = trabajando;
     }
-
-
-  
-  
-  
-  
-
-
     
-    
+    public long getSixteenHoursInMs() {
+        int dayInHours = 24;
+        long sixteenHours = (long) ((16 * this.recursos.getDayDurationInMs())/dayInHours);
+        return sixteenHours;
+    }
     
            
     public void run() {
@@ -49,20 +56,23 @@ public class ProjectManager extends Thread{
                 try {
                    
             for (int i = 0; i < 32; i++) {
-            if (trabajando==1){
+            if (trabajando){
                  
-                setTrabajando(0);
+                setTrabajando(false);
             }else{
                  
-                setTrabajando(1);
+                setTrabajando(true);
                 
             }
             EstadoPM.setText(String.valueOf(trabajando));
+            Faltas.setText(String.valueOf(faltas));
+            Descontado.setText(String.valueOf(discountedSalary));
+
             sleep(21);
             }
-                    setTrabajando(1);
-                    recursos.setDias(recursos.getDias()-1);
-                    
+                    setTrabajando(true);
+                    recursos.setDiasSobrantes(recursos.getDiasSobrantes()-1);
+
                     sleep(334);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,4 +85,60 @@ public class ProjectManager extends Thread{
     
     
 }
+
+    /**
+     * @return the salario
+     */
+    public int getSalario() {
+        return salario;
+    }
+
+    /**
+     * @param salario the salario to set
+     */
+    public void setSalario(int salario) {
+        this.salario = salario;
+    }
+
+    /**
+     * @return the salarioacc
+     */
+    public int getSalarioacc() {
+        return salarioacc;
+    }
+
+    /**
+     * @param salarioacc the salarioacc to set
+     */
+    public void setSalarioacc(int salarioacc) {
+        this.salarioacc = salarioacc;
+    }
+
+    /**
+     * @return the discountedSalary
+     */
+    public int getDiscountedSalary() {
+        return discountedSalary;
+    }
+
+    /**
+     * @param discountedSalary the discountedSalary to set
+     */
+    public void setDiscountedSalary(int discountedSalary) {
+        this.discountedSalary = discountedSalary;
+    }
+
+    /**
+     * @return the faltas
+     */
+    public int getFaltas() {
+        return faltas;
+    }
+
+    /**
+     * @param faltas the faltas to set
+     */
+    public void setFaltas(int faltas) {
+        this.faltas = faltas;
+    }
 }

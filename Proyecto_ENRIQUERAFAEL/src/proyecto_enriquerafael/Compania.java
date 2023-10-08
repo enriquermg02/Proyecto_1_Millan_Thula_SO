@@ -16,9 +16,7 @@ public class Compania {
     Interfaz inter;
     
     int Developers[];
-    
- 
-    
+   
     Drive drive;
     
     Recursos recursos;
@@ -79,9 +77,9 @@ public class Compania {
     
     public void fundar(){
         
-        Actualizar();
-        crearhilosfijos();
-//       perrogato();
+       Actualizar();
+       crearhilosfijos();
+       perrogato();
         
         
         
@@ -93,7 +91,9 @@ public class Compania {
     
       public void Actualizar(){
         
-        HilosGui actu = new HilosGui(drive,inter.getTexto0(),inter.getTexto1(),inter.getTexto2(),inter.getTexto3(),inter.getTexto4(),inter.getSinDLC(),inter.getConDLC());
+        HilosGui actu = new HilosGui(recursos, drive,inter.getTexto0(),inter.getTexto1(),inter.getTexto2(),inter.getTexto3(),
+                inter.getTexto4(),inter.getSinDLC(),inter.getConDLC(), inter.getEstadoPM(), inter.getFaltas(), 
+                inter.getDescontado(), inter.getEntrega(), inter.getTotal());
         actu.start();
      
     }
@@ -120,10 +120,11 @@ public class Compania {
     
     
      public void perrogato(){
-         Director director=new Director(recursos);
-         director.start();
-         ProjectManager pj=new ProjectManager(recursos,inter.getEstadoPM());
+
+         ProjectManager pj=new ProjectManager(recursos,inter.getEstadoPM(),drive, inter.getFaltas(), inter.getDescontado());
          pj.start();
+         DirectorJuegos director = new DirectorJuegos(pj, recursos, drive, 550000, 600000);
+         director.start();
 
 }   
         

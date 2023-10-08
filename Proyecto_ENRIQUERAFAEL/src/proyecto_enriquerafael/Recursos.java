@@ -4,6 +4,8 @@
  */
 package proyecto_enriquerafael;
 
+import java.util.concurrent.Semaphore;
+
 /**
  *
  * @author enriq
@@ -13,18 +15,35 @@ public class Recursos {
     private int SueldoProjectManager;
     private int Dias;
     private int dineroProducido;
-    private int faltas;
-    private int dayDuration;
+    private int costos;
+    private int beneficio;    
+    private int dayDuration; 
+    public int diasSobrantes;
+    private Semaphore counterMutex;
+
  
 
-    public Recursos(int SueldoEmpleados, int SueldoProjectManager,int dias, int dineroProducido, int faltas, int dayDuration) {
+    public Recursos(int SueldoEmpleados, int SueldoProjectManager,int dias, int dayDuration) {
         this.SueldoEmpleados = SueldoEmpleados;
         this.SueldoProjectManager = SueldoProjectManager;
         this.Dias=dias;
-        this.dineroProducido = dineroProducido;
-        this.faltas = faltas;
+        this.dineroProducido = 0;
+        this.costos = 0;
+        this.beneficio = 0;
         this.dayDuration = dayDuration;
+        this.counterMutex = new Semaphore(1);
         
+    
+        
+    }
+ 
+    public int getDayDurationInMs() {
+        int dayDurationInMs = this.dayDuration * 1000;
+        return dayDurationInMs;
+    }
+    
+    public void calculateNetIncome() {
+        this.setBeneficio((int) (this.getDineroProducido() - this.getCostos()));
     }
 
     public int getSueldoEmpleados() {
@@ -97,20 +116,6 @@ public class Recursos {
     }
 
     /**
-     * @return the faltas
-     */
-    public int getFaltas() {
-        return faltas;
-    }
-
-    /**
-     * @param faltas the faltas to set
-     */
-    public void setFaltas(int faltas) {
-        this.faltas = faltas;
-    }
-
-    /**
      * @return the dayDuration
      */
     public int getDayDuration() {
@@ -122,6 +127,62 @@ public class Recursos {
      */
     public void setDayDuration(int dayDuration) {
         this.dayDuration = dayDuration;
+    }
+
+    /**
+     * @return the diasSobrantes
+     */
+    public int getDiasSobrantes() {
+        return diasSobrantes;
+    }
+
+    /**
+     * @param diasSobrantes the diasSobrantes to set
+     */
+    public void setDiasSobrantes(int diasSobrantes) {
+        this.diasSobrantes = diasSobrantes;
+    }
+
+    /**
+     * @return the counterMutex
+     */
+    public Semaphore getCounterMutex() {
+        return counterMutex;
+    }
+
+    /**
+     * @param counterMutex the counterMutex to set
+     */
+    public void setCounterMutex(Semaphore counterMutex) {
+        this.counterMutex = counterMutex;
+    }
+
+    /**
+     * @return the costos
+     */
+    public int getCostos() {
+        return costos;
+    }
+
+    /**
+     * @param costos the costos to set
+     */
+    public void setCostos(int costos) {
+        this.costos = costos;
+    }
+
+    /**
+     * @return the beneficio
+     */
+    public int getBeneficio() {
+        return beneficio;
+    }
+
+    /**
+     * @param beneficio the beneficio to set
+     */
+    public void setBeneficio(int beneficio) {
+        this.beneficio = beneficio;
     }
     
     

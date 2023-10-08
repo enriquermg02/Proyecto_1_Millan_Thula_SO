@@ -98,8 +98,8 @@ public class CompaniaB {
     
       public void Actualizar(){
         
-        HilosGui actu = new HilosGui(drive,inter.getTexto0(),inter.getTexto1(),inter.getTexto2(),inter.getTexto3(),inter.getTexto4(),inter.getSinDLC(),inter.getConDLC());
-        actu.start();
+//        HilosGui actu = new HilosGui(drive,inter.getTexto0(),inter.getTexto1(),inter.getTexto2(),inter.getTexto3(),inter.getTexto4(),inter.getSinDLC(),inter.getConDLC());
+//        actu.start();
      
     }
     
@@ -131,7 +131,6 @@ public class CompaniaB {
                 for (int i = 0; i < 12; i++) {
            Developer nuevo = new Developer(6, 1, drive,mutex,recursos);
              trabajadores[i]=nuevo;
-                    System.out.println(i);
         }
         
     }

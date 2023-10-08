@@ -56,7 +56,7 @@ public class Developer extends Thread {
             try {
                 
                 Work();
-                sleep(recursos.getDayDuration());
+                sleep(recursos.getDayDurationInMs());
 
 
                 
@@ -85,7 +85,6 @@ public class Developer extends Thread {
 
                 else{
                 this.mutex.acquire(1);
-                
                 this.drive.addProduct( type);
                 this.recursos.agregar(type);
                 this.acc=0;

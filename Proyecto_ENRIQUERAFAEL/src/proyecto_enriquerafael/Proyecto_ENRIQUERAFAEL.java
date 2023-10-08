@@ -4,11 +4,6 @@
  */
 package proyecto_enriquerafael;
 
-import static java.lang.Thread.sleep;
-import java.util.concurrent.Semaphore;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 /**
  *

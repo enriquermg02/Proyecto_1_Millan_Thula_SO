@@ -4,6 +4,8 @@
  */
 package proyecto_enriquerafael;
 
+import java.util.concurrent.Semaphore;
+
 /**
  *
  * @author enriq
@@ -17,6 +19,7 @@ public class Drive {
     public int juegos; 
     public int juegosDLC;
     private int contador;
+    public Semaphore counterMutex;
 
     public Drive(int levels, int narrative, int sprite, int sistem, int DLC, int juegos, int juegosDLC, int contador) {
         this.levels = levels;
@@ -27,6 +30,8 @@ public class Drive {
         this.juegos = juegos;
         this.juegosDLC = juegosDLC;
         this.contador = contador;
+        this.counterMutex = new Semaphore(1);
+
     }
 
     public int getDLC() {
@@ -172,6 +177,20 @@ public class Drive {
      */
     public void setContador(int contador) {
         this.contador = contador;
+    }
+
+    /**
+     * @return the counterMutex
+     */
+    public Semaphore getCounterMutex() {
+        return counterMutex;
+    }
+
+    /**
+     * @param counterMutex the counterMutex to set
+     */
+    public void setCounterMutex(Semaphore counterMutex) {
+        this.counterMutex = counterMutex;
     }
     
 }
