@@ -94,7 +94,7 @@ public class Drive {
         this.juegos = juegos;
     }
     
-    public void addProduct( int type){
+    public void addProduct( String compania,int type){
         
 //        narrativa
 //        disenador
@@ -103,7 +103,7 @@ public class Drive {
 //        desarrollador de DLC
 //        juego
         
-   
+   if(compania=="Nintendo"){
     if((type == 0)&& (getNarrative()<25)){
         
         setNarrative(getNarrative()+1);
@@ -114,7 +114,7 @@ public class Drive {
         
     }else if((type==2)&&(getSprite()<55)){
         
-        setSprite(getSprite()+1);
+        setSprite(getSprite()+2);
         
     }else if ((type==3)&&(getSistem()<35)){
         
@@ -144,13 +144,65 @@ public class Drive {
             setNarrative(getNarrative()-2);
             setSistem(getSistem()-4);
             setSprite(getSprite()-4);
+            setDLC(getDLC()-2);
             setContador(0);
 
                             }      
     }
+   }else if(compania=="Betesda"){
+      if((type == 0)&& (getNarrative()<25)){
+        
+        setNarrative(getNarrative()+1);
+        
+    }else if((type==1)&& (getLevels()<20)){
+        
+        setLevels(getLevels()+1);
+        
+    }else if((type==2)&&(getSprite()<55)){
+        
+        setSprite(getSprite()+1);
+        
+    }else if ((type==3)&&(getSistem()<35)){
+        
+        setSistem(getSistem()+3);
+        
+    }else if ((type==4)&&(getDLC()<10)){
+        
+        setDLC(getDLC()+1);
+        
+    }
+    else if((type==5)&&(getContador()<5)){
+                if((getNarrative() >= 2) && (getLevels() >= 1) 
+             && (getSprite()>=4) && (getSistem()>=4) && (getDLC()>=2)){
+            setJuegos(getJuegos()+1);
+            setLevels(getLevels()-3);
+            setNarrative(getNarrative()-2);
+            setSistem(getSistem()-6);
+            setSprite(getSprite()-4);
+            
+            setContador(getContador()+1);
+                            }    
+    }
+    else if ((type==5)&&(getContador()==5)){
+        if((getNarrative() >= 2) && (getLevels() >= 1) 
+             && (getSprite()>=4) && (getSistem()>=4) && (getDLC()>=2)){
+            setJuegosDLC(getJuegosDLC()+1);
+            setLevels(getLevels()-1);
+            setNarrative(getNarrative()-2);
+            setSistem(getSistem()-4);
+            setSprite(getSprite()-4);
+            setDLC(getDLC()-5);
+            setContador(0);
+
+                            }      
+    } 
+   }
 
 }
 
+    
+  
+    
     /**
      * @return the juegosDLC
      */

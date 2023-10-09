@@ -36,6 +36,19 @@ public class InterfazB extends javax.swing.JFrame {
  
     }
 
+    public JTextField getD() {
+        return EstadoD;
+    }
+
+    public void setD(JTextField D) {
+        this.EstadoD = D;
+    }
+
+    
+    
+    
+    
+    
     public JSpinner getDLC() {
         return DLC;
     }
@@ -122,6 +135,54 @@ public class InterfazB extends javax.swing.JFrame {
 
     public void setSinDLC(JTextField sinDLC) {
         this.sinDLC = sinDLC;
+    }
+
+    public JTextField getEstadoD() {
+        return EstadoD;
+    }
+
+    public void setEstadoD(JTextField EstadoD) {
+        this.EstadoD = EstadoD;
+    }
+
+    public JTextField getBrutas() {
+        return brutas;
+    }
+
+    public void setBrutas(JTextField brutas) {
+        this.brutas = brutas;
+    }
+
+    public JTextField getFaltas() {
+        return faltas;
+    }
+
+    public void setFaltas(JTextField faltas) {
+        this.faltas = faltas;
+    }
+
+    public JTextField getEntrega() {
+        return Entrega;
+    }
+
+    public void setEntrega(JTextField Entrega) {
+        this.Entrega = Entrega;
+    }
+
+    public JTextField getTotal() {
+        return Total;
+    }
+
+    public void setTotal(JTextField Total) {
+        this.Total = Total;
+    }
+
+    public JTextField getDescontado() {
+        return Descontado;
+    }
+
+    public void setDescontado(JTextField Descontado) {
+        this.Descontado = Descontado;
     }
 
     
@@ -213,6 +274,21 @@ public class InterfazB extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        EstadoD = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        Entrega = new javax.swing.JTextField();
+        Total = new javax.swing.JTextField();
+        Costos = new javax.swing.JTextField();
+        brutas = new javax.swing.JTextField();
+        netas = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        Descontado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -275,7 +351,7 @@ public class InterfazB extends javax.swing.JFrame {
         });
         jPanel1.add(sinDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 80, -1));
         jPanel1.add(conDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
-        jPanel1.add(faltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 80, -1));
+        jPanel1.add(faltas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 80, -1));
 
         Menu.setText("Menu");
         Menu.addActionListener(new java.awt.event.ActionListener() {
@@ -284,10 +360,10 @@ public class InterfazB extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
-        jPanel1.add(EstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
+        jPanel1.add(EstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 80, -1));
 
         jLabel1.setText("Project Manager");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
 
         Integradores.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
         Integradores.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -339,7 +415,62 @@ public class InterfazB extends javax.swing.JFrame {
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
 
         jLabel13.setText("Faltas");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
+        jPanel1.add(EstadoD, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
+
+        jLabel14.setText("Director");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
+
+        jLabel16.setText("Dinero Descontado");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
+
+        jLabel19.setText("Dias para la Entrega");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
+
+        Entrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntregaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Entrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, -1, -1));
+
+        Total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TotalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
+
+        Costos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CostosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, -1, -1));
+        jPanel1.add(brutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, -1, -1));
+        jPanel1.add(netas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, -1, -1));
+
+        jLabel18.setText("¿Que esta haciendo?");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, 20));
+
+        jLabel20.setText("Costos");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, -1, -1));
+
+        jLabel21.setText("Ganancias brutas");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, -1, -1));
+
+        jLabel22.setText("Ganancias netas");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, -1, -1));
+
+        jLabel23.setText("¿Que esta haciendo?");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, 20));
+
+        Descontado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DescontadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Descontado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 90, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -2, 840, 460));
 
@@ -435,6 +566,22 @@ if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getVal
         }
     }//GEN-LAST:event_IntegradoresStateChanged
 
+    private void EntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntregaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EntregaActionPerformed
+
+    private void TotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TotalActionPerformed
+
+    private void CostosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CostosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CostosActionPerformed
+
+    private void DescontadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescontadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DescontadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -479,7 +626,11 @@ if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getVal
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Costos;
     private javax.swing.JSpinner DLC;
+    private javax.swing.JTextField Descontado;
+    private javax.swing.JTextField Entrega;
+    private javax.swing.JTextField EstadoD;
     private javax.swing.JTextField EstadoPM;
     private javax.swing.JSpinner Integradores;
     private javax.swing.JSpinner Levels;
@@ -491,6 +642,8 @@ if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getVal
     private javax.swing.JTextField Texto2;
     private javax.swing.JTextField Texto3;
     private javax.swing.JTextField Texto4;
+    private javax.swing.JTextField Total;
+    private javax.swing.JTextField brutas;
     private javax.swing.JTextField conDLC;
     private javax.swing.JTextField faltas;
     private javax.swing.JLabel jLabel1;
@@ -498,7 +651,15 @@ if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getVal
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -507,6 +668,7 @@ if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getVal
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField netas;
     private javax.swing.JTextField sinDLC;
     private javax.swing.JSpinner sistems;
     // End of variables declaration//GEN-END:variables

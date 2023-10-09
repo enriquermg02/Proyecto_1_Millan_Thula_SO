@@ -150,6 +150,14 @@ public final class Interfaz extends javax.swing.JFrame {
     public void setDescontado(JTextField Descontado) {
         this.Descontado = Descontado;
     }
+
+    public JTextField getEstadoD() {
+        return EstadoD;
+    }
+
+    public void setEstadoD(JTextField EstadoD) {
+        this.EstadoD = EstadoD;
+    }
     
          
     
@@ -407,7 +415,7 @@ public final class Interfaz extends javax.swing.JFrame {
                 EstadoDActionPerformed(evt);
             }
         });
-        jPanel1.add(EstadoD, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 100, -1));
+        jPanel1.add(EstadoD, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 100, -1));
 
         jLabel16.setText("¿Que esta haciendo?");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, 20));
@@ -454,12 +462,12 @@ public final class Interfaz extends javax.swing.JFrame {
                 CostosActionPerformed(evt);
             }
         });
-        jPanel1.add(Costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, -1, -1));
+        jPanel1.add(Costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 80, -1));
 
         jLabel20.setText("Costos");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, -1));
-        jPanel1.add(brutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, -1, -1));
-        jPanel1.add(netas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, -1, -1));
+        jPanel1.add(brutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 70, -1));
+        jPanel1.add(netas, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 70, -1));
 
         jLabel21.setText("Ganancias brutas");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, -1, -1));
@@ -467,7 +475,7 @@ public final class Interfaz extends javax.swing.JFrame {
         jLabel22.setText("Ganancias netas");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -2, 840, 460));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 870, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

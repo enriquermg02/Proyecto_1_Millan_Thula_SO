@@ -17,6 +17,10 @@ public class Proyecto_ENRIQUERAFAEL {
     public static void main(String[] args) {                
                  
         InterfazG interG = new InterfazG();
+        HiloGrafica hilo= new HiloGrafica(interG.recursosN,interG.getGrafico(),interG.dataset,interG.recursosN.getDayDuration(),interG.recursosB);
+        hilo.start();
+//        HiloGrafica hilo2= new HiloGrafica(interG.recursosB,interG.getGrafico(),interG.dataset,interG.recursosB.getDayDuration());
+//        hilo2.start();
         interG.setVisible(true);
         
              

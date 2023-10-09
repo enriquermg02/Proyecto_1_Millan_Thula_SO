@@ -13,28 +13,50 @@ import java.util.concurrent.Semaphore;
 public class Recursos {
     private int SueldoEmpleados;
     private int SueldoProjectManager;
+    private int SueldoDirector;
     private int Dias;
     private int dineroProducido;
     private int costos;
     private int beneficio;    
     private int dayDuration; 
     public int diasSobrantes;
+    public int diasPasados;
     private Semaphore counterMutex;
 
  
 
-    public Recursos(int SueldoEmpleados, int SueldoProjectManager,int dias, int dayDuration) {
+    public Recursos(int SueldoEmpleados, int SueldoProjectManager,int SueldoDirector, int dias, int dayDuration) {
         this.SueldoEmpleados = SueldoEmpleados;
         this.SueldoProjectManager = SueldoProjectManager;
         this.Dias=dias;
         this.dineroProducido = 0;
         this.costos = 0;
         this.beneficio = 0;
+        this.diasPasados=0;
         this.dayDuration = dayDuration;
         this.counterMutex = new Semaphore(1);
+        this.SueldoDirector=SueldoDirector;
         
     
         
+    }
+
+    public int getDiasPasados() {
+        return diasPasados;
+    }
+
+    public void setDiasPasados(int diasPasados) {
+        this.diasPasados = diasPasados;
+    }
+    
+    
+
+    public int getSueldoDirector() {
+        return SueldoDirector;
+    }
+
+    public void setSueldoDirector(int SueldoDirector) {
+        this.SueldoDirector = SueldoDirector;
     }
  
     public int getDayDurationInMs() {
@@ -73,8 +95,6 @@ public class Recursos {
     public void agregar(int type){
         
         
-        //FALTA AGREGAR OTRO SEMAFORO
-        
         
         
         if((type == 0)){
@@ -101,6 +121,24 @@ public class Recursos {
     }
     }
 
+    
+      public void sueldoPJ(){
+        this.SueldoProjectManager+=20;
+    }
+    
+    public void sueldoDirector(){
+        this.SueldoDirector+=30;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @return the dineroProducido
      */

@@ -18,8 +18,9 @@ public class DirectorJuegos extends Thread {
     private Drive drive;
     private int precioNormal;
     private int precioDLC;
+    javax.swing.JTextField EstadoD;
     
-    public DirectorJuegos(ProjectManager manager, Recursos recursos, Drive drive, int precioNormal, int precioDLC) {
+    public DirectorJuegos(ProjectManager manager, Recursos recursos, Drive drive, int precioNormal, int precioDLC,javax.swing.JTextField EstadoD) {
         this.salario = 30;
         this.recursos = recursos;
         this.manager = manager;
@@ -28,6 +29,7 @@ public class DirectorJuegos extends Thread {
         this.drive = drive;
         this.precioNormal = precioNormal;
         this.precioDLC = precioDLC;
+        this.EstadoD=EstadoD;
     }
     
     @Override
@@ -44,11 +46,13 @@ public class DirectorJuegos extends Thread {
                     sleep(randomHour);
                     this.setRevisarManager(true);
                     verificarManager();
+                    EstadoD.setText("");
                     long remainingDay = (long) (this.recursos.getDayDurationInMs() - (randomHour + twentyFiveMinutes));
+                    recursos.sueldoDirector();
                     sleep(remainingDay);
                 }
                 
-                getPago();
+//                getPago();
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(DirectorJuegos.class.getName()).log(Level.SEVERE, null, ex);
@@ -66,11 +70,12 @@ public class DirectorJuegos extends Thread {
         if (isRevisarManager()) {
             if (!this.manager.getTrabajando()) {
                 try {
-                    sleep(twentyFiveMinutes);
+                    EstadoD.setText("Verificadndo");
                     this.setRevisarManager(false);
                     this.manager.setSalarioacc(this.manager.getSalarioacc() - 50);
                     this.manager.setDiscountedSalary(this.manager.getDiscountedSalary() + 50);
                     this.manager.setFaltas(this.manager.getFaltas() + 1);
+                    sleep(twentyFiveMinutes);
                     
                 } catch (InterruptedException ex) {
                     Logger.getLogger(DirectorJuegos.class.getName()).log(Level.SEVERE, null, ex);

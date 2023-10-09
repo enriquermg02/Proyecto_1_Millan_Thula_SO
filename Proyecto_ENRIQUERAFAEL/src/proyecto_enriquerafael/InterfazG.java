@@ -4,13 +4,21 @@
  */
 package proyecto_enriquerafael;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.concurrent.Semaphore;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+ 
 
 /**
  *
@@ -21,7 +29,7 @@ public final class InterfazG extends javax.swing.JFrame {
     
         Semaphore mutex = new Semaphore(1);
         //Area Nintendo//
-        Recursos recursosN= new Recursos(0,0,0,0);
+        Recursos recursosN= new Recursos(0,0,0,0,0);
         Drive drive = new Drive(0,0,0,0,0,0,0,0);
         ContadorProvisional ContadorN = new ContadorProvisional();
         Thread DevelopersN []= new Thread[20];
@@ -29,14 +37,26 @@ public final class InterfazG extends javax.swing.JFrame {
         Compania nintendo =new Compania (interN, mutex, recursosN, drive);
 //        //Fin//
 //        //Area Bethesda//
-        Recursos recursosB = new Recursos(0,0,0,0);
+        Recursos recursosB = new Recursos(0,0,0,0,0);
         Drive driveB = new Drive(0,0,0,0,0,0,0,0);
         ContadorProvisional ContadorB = new ContadorProvisional();
         Thread DevelopersB []= new Thread[20];
         InterfazB interB = new InterfazB(driveB, mutex, recursosB, DevelopersB, ContadorB);
         CompaniaB bethesda =new CompaniaB (interB ,mutex, recursosB, driveB);
+        
+        
+        //graficos
+        DefaultCategoryDataset dataset= new DefaultCategoryDataset();
+        DefaultCategoryDataset dataset2= new DefaultCategoryDataset();
+        
+        
+        JFreeChart linea= ChartFactory.createLineChart("hads","Tiempo","Beneficos",dataset);
+        ChartPanel panel= new ChartPanel(linea);
+         
+      
     
     public InterfazG() {
+       
         
         initComponents();
         this.loadSetDaysJson();
@@ -45,7 +65,7 @@ public final class InterfazG extends javax.swing.JFrame {
         this.dias.setText(Integer.toString(recursosN.getDias()));
         nintendo.fundar();
         bethesda.fundar();
-
+        
         setLocationRelativeTo(null);
       
         
@@ -57,9 +77,30 @@ public final class InterfazG extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
+       
+       panel.setPreferredSize(new Dimension(400,200));
+       
+         grafico.setLayout(new BorderLayout());
+        grafico.add(panel,BorderLayout.NORTH);
         
-        
+         
+         
+      
+
     }
+    
+   
+
+    public JPanel getGrafico() {
+        return grafico;
+    }
+
+    public void setGrafico(JPanel grafico) {
+        this.grafico = grafico;
+    }
+    
+    
+    
     
     public void loadSetDaysJson() {
         JSONParser parser = new JSONParser();
@@ -183,6 +224,10 @@ public final class InterfazG extends javax.swing.JFrame {
         }
     }
     @SuppressWarnings("unchecked")
+    
+    
+    
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -193,6 +238,7 @@ public final class InterfazG extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         segundos = new javax.swing.JTextField();
         dias = new javax.swing.JTextField();
+        grafico = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -230,6 +276,19 @@ public final class InterfazG extends javax.swing.JFrame {
         dias.setText("30");
         jPanel1.add(dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
+        javax.swing.GroupLayout graficoLayout = new javax.swing.GroupLayout(grafico);
+        grafico.setLayout(graficoLayout);
+        graficoLayout.setHorizontalGroup(
+            graficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
+        );
+        graficoLayout.setVerticalGroup(
+            graficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 230, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(grafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 360, 230));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -243,6 +302,14 @@ public final class InterfazG extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JPanel getGRAFICO() {
+        return grafico;
+    }
+
+    public void setGRAFICO(JPanel GRAFICO) {
+        this.grafico = GRAFICO;
+    }
 
     private void NintendoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NintendoActionPerformed
         interN.setVisible(true);
@@ -275,6 +342,7 @@ public final class InterfazG extends javax.swing.JFrame {
     private javax.swing.JButton Bethesda;
     private javax.swing.JButton Nintendo;
     private javax.swing.JTextField dias;
+    private javax.swing.JPanel grafico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

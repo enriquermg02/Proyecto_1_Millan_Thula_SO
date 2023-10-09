@@ -23,6 +23,7 @@ public class ProjectManager extends Thread{
     private int discountedSalary;
     private int faltas;
     private Drive drive;
+    private int tipo;
   
 
     public ProjectManager(Recursos recursos,javax.swing.JTextField EstadoPM, Drive drive, javax.swing.JTextField Faltas, javax.swing.JTextField Descontado) {
@@ -32,8 +33,11 @@ public class ProjectManager extends Thread{
         this.Faltas=Faltas;
         this.Descontado=Descontado;
         this.drive = drive;
+      
         
     }
+
+
 
     public boolean getTrabajando() {
         return trabajando;
@@ -43,13 +47,22 @@ public class ProjectManager extends Thread{
         this.trabajando = trabajando;
     }
     
-    public long getSixteenHoursInMs() {
+    public int getSixteenHoursInMs() {
         int dayInHours = 24;
-        long sixteenHours = (long) ((16 * this.recursos.getDayDurationInMs())/dayInHours);
+        int sixteenHours =  (((16 * this.recursos.getDayDurationInMs())/dayInHours)/32);
         return sixteenHours;
     }
     
+    public int getTheRest(){
+        
+        int Therest=this.recursos.getDayDurationInMs()- getSixteenHoursInMs();
+        
+        
+        return Therest;
+    }
+    
            
+    @Override
     public void run() {
         while(true) {
   
@@ -68,12 +81,13 @@ public class ProjectManager extends Thread{
             Faltas.setText(String.valueOf(faltas));
             Descontado.setText(String.valueOf(discountedSalary));
 
-            sleep(21);
+            sleep(getSixteenHoursInMs());
             }
                     setTrabajando(true);
                     recursos.setDiasSobrantes(recursos.getDiasSobrantes()-1);
-
-                    sleep(334);
+                    recursos.setDiasPasados(recursos.getDiasPasados()+1);
+                    recursos.sueldoPJ();
+                    sleep(getTheRest());
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
             }

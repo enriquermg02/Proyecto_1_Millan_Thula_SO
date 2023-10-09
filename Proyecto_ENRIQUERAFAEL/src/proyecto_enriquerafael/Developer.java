@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 public class Developer extends Thread {
     
     static javax.swing.JTextField Texto0;
+    private String compania;
     private int type;
     private float productionPerDay;
     private float acc = 0;
@@ -25,14 +26,22 @@ public class Developer extends Thread {
     static Semaphore mutex;
     private int contadorDLC;
     
-    public Developer (int type, float pp, Drive drive, Semaphore m,Recursos recursos){
+    public Developer (String compania,int type, float pp, Drive drive, Semaphore m,Recursos recursos){
         this.type = type;
         this.productionPerDay = pp;
         this.drive = drive;
         this.mutex = m;
         this.recursos=recursos;
+        this.compania=compania;
         
-        
+    }
+
+    public String getCompania() {
+        return compania;
+    }
+
+    public void setCompania(String compania) {
+        this.compania = compania;
     }
 
     
@@ -85,7 +94,7 @@ public class Developer extends Thread {
 
                 else{
                 this.mutex.acquire(1);
-                this.drive.addProduct( type);
+                this.drive.addProduct(compania, type);
                 this.recursos.agregar(type);
                 this.acc=0;
                 this.mutex.release();

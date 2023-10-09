@@ -30,7 +30,7 @@ public class HilosGui extends Thread  {
     javax.swing.JTextField Descontado;
     javax.swing.JTextField Entrega;
     javax.swing.JTextField Total;
-
+    javax.swing.JTextField EstadoD;
     
 
     
@@ -39,7 +39,7 @@ public class HilosGui extends Thread  {
             javax.swing.JTextField Texto2,javax.swing.JTextField Texto3, javax.swing.JTextField Texto4,
             javax.swing.JTextField sinDLC, javax.swing.JTextField conDLC, javax.swing.JTextField EstadoPM,
             javax.swing.JTextField Faltas, javax.swing.JTextField Descontado, 
-            javax.swing.JTextField Entrega, javax.swing.JTextField Total) {
+            javax.swing.JTextField Entrega, javax.swing.JTextField Total,javax.swing.JTextField EstadoD) {
         
         this.recursos = recursos;
         this.drive=drive;
@@ -55,12 +55,14 @@ public class HilosGui extends Thread  {
         this.Descontado=Descontado;
         this.Entrega=Entrega;
         this.Total=Total;
+        this.EstadoD=EstadoD;
+        
 
     }
     
        
         
-    @Override
+
         
         
     public void run() {
