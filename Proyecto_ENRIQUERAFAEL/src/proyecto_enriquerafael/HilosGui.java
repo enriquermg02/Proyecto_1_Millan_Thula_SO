@@ -31,15 +31,19 @@ public class HilosGui extends Thread  {
     javax.swing.JTextField Entrega;
     javax.swing.JTextField Total;
     javax.swing.JTextField EstadoD;
-    
+    javax.swing.JTextField costos;
+    javax.swing.JTextField brutas;
+    javax.swing.JTextField netas;
+
 
     
     
     public HilosGui(Recursos recursos, Drive drive,javax.swing.JTextField Texto0,javax.swing.JTextField Texto1,
             javax.swing.JTextField Texto2,javax.swing.JTextField Texto3, javax.swing.JTextField Texto4,
             javax.swing.JTextField sinDLC, javax.swing.JTextField conDLC, javax.swing.JTextField EstadoPM,
-            javax.swing.JTextField Faltas, javax.swing.JTextField Descontado, 
-            javax.swing.JTextField Entrega, javax.swing.JTextField Total,javax.swing.JTextField EstadoD) {
+            javax.swing.JTextField Faltas, javax.swing.JTextField Descontado,javax.swing.JTextField Entrega, 
+            javax.swing.JTextField Total,javax.swing.JTextField EstadoD, javax.swing.JTextField costos,
+            javax.swing.JTextField brutas,javax.swing.JTextField netas) {
         
         this.recursos = recursos;
         this.drive=drive;
@@ -56,6 +60,9 @@ public class HilosGui extends Thread  {
         this.Entrega=Entrega;
         this.Total=Total;
         this.EstadoD=EstadoD;
+        this.costos=costos;
+        this.brutas=brutas;
+        this.netas=netas;
         
 
     }
@@ -67,7 +74,7 @@ public class HilosGui extends Thread  {
         
     public void run() {
         while(true) {
-            actualizar(Texto0,Texto1,Texto2,Texto3,Texto4,sinDLC,conDLC,EstadoPM,Faltas,Descontado,Entrega,Total);
+            actualizar(Texto0,Texto1,Texto2,Texto3,Texto4,sinDLC,conDLC,EstadoPM,Faltas,Descontado,Entrega,Total,costos,brutas,netas);
          
     }
     
@@ -75,7 +82,7 @@ public class HilosGui extends Thread  {
      public void actualizar(javax.swing.JTextField Texto0,javax.swing.JTextField Texto1,javax.swing.JTextField Texto2,
              javax.swing.JTextField Texto3, javax.swing.JTextField Texto4, javax.swing.JTextField sinDLC, javax.swing.JTextField conDLC,
              javax.swing.JTextField EstadoPM, javax.swing.JTextField Faltas, javax.swing.JTextField Descontado, 
-             javax.swing.JTextField Entrega, javax.swing.JTextField Total){
+             javax.swing.JTextField Entrega, javax.swing.JTextField Total, javax.swing.JTextField costos, javax.swing.JTextField brutas, javax.swing.JTextField netas){
          
 
          
@@ -87,8 +94,11 @@ public class HilosGui extends Thread  {
           Texto4.setText(String.valueOf(drive.getDLC()));
           sinDLC.setText(String.valueOf(drive.getJuegos()));
           conDLC.setText(String.valueOf(drive.getJuegosDLC()));
-           Entrega.setText(String.valueOf(recursos.getDiasSobrantes()));
-           Total.setText(String.valueOf(recursos.getDias()));
+          Entrega.setText(String.valueOf(recursos.getDiasSobrantes()));
+          Total.setText(String.valueOf(recursos.getDias()));
+          costos.setText(String.valueOf(recursos.getCostos()));
+          brutas.setText(String.valueOf(recursos.getDineroProducido()));
+          netas.setText(String.valueOf(recursos.getBeneficio()));
 
 
 

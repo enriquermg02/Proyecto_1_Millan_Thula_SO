@@ -360,7 +360,7 @@ public class InterfazB extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
-        jPanel1.add(EstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 80, -1));
+        jPanel1.add(EstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 80, -1));
 
         jLabel1.setText("Project Manager");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
@@ -416,7 +416,7 @@ public class InterfazB extends javax.swing.JFrame {
 
         jLabel13.setText("Faltas");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
-        jPanel1.add(EstadoD, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
+        jPanel1.add(EstadoD, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 100, -1));
 
         jLabel14.setText("Director");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
@@ -446,9 +446,9 @@ public class InterfazB extends javax.swing.JFrame {
                 CostosActionPerformed(evt);
             }
         });
-        jPanel1.add(Costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, -1, -1));
-        jPanel1.add(brutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, -1, -1));
-        jPanel1.add(netas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, -1, -1));
+        jPanel1.add(Costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 110, -1));
+        jPanel1.add(brutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 110, -1));
+        jPanel1.add(netas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 110, -1));
 
         jLabel18.setText("¿Que esta haciendo?");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, 20));
@@ -672,4 +672,32 @@ if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getVal
     private javax.swing.JTextField sinDLC;
     private javax.swing.JSpinner sistems;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the Costos
+     */
+    public JTextField getCostos() {
+        return Costos;
+    }
+
+    /**
+     * @param Costos the Costos to set
+     */
+    public void setCostos(JTextField Costos) {
+        this.Costos = Costos;
+    }
+
+    /**
+     * @return the netas
+     */
+    public JTextField getNetas() {
+        return netas;
+    }
+
+    /**
+     * @param netas the netas to set
+     */
+    public void setNetas(JTextField netas) {
+        this.netas = netas;
+    }
 }

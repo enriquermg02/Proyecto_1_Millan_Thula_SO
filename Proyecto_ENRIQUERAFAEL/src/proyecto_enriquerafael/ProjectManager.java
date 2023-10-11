@@ -77,7 +77,14 @@ public class ProjectManager extends Thread{
                 setTrabajando(true);
                 
             }
-            EstadoPM.setText(String.valueOf(trabajando));
+            this.recursos.descontado =discountedSalary;
+            this.recursos.setCostos(discountedSalary + this.recursos.SueldoDirector+this.recursos.SueldoEmpleados+this.recursos.SueldoProjectManager);
+            this.recursos.setBeneficio(this.recursos.getDineroProducido()-this.recursos.getCostos());
+                if (trabajando) {
+                    EstadoPM.setText("Trabajando");
+                }else{
+                    EstadoPM.setText("Viendo Stream");
+                }
             Faltas.setText(String.valueOf(faltas));
             Descontado.setText(String.valueOf(discountedSalary));
 

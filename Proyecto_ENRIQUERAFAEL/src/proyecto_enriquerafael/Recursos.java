@@ -11,9 +11,9 @@ import java.util.concurrent.Semaphore;
  * @author enriq
  */
 public class Recursos {
-    private int SueldoEmpleados;
-    private int SueldoProjectManager;
-    private int SueldoDirector;
+    public int SueldoEmpleados;
+    public int SueldoProjectManager;
+    public int SueldoDirector;
     private int Dias;
     private int dineroProducido;
     private int costos;
@@ -22,6 +22,7 @@ public class Recursos {
     public int diasSobrantes;
     public int diasPasados;
     private Semaphore counterMutex;
+    public int descontado;
 
  
 
@@ -36,6 +37,7 @@ public class Recursos {
         this.dayDuration = dayDuration;
         this.counterMutex = new Semaphore(1);
         this.SueldoDirector=SueldoDirector;
+        this.descontado = 0;
         
     
         

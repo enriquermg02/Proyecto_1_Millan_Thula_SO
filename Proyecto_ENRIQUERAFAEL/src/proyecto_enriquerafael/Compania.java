@@ -93,7 +93,7 @@ public class Compania {
         
         HilosGui actu = new HilosGui(recursos, drive,inter.getTexto0(),inter.getTexto1(),inter.getTexto2(),inter.getTexto3(),
                 inter.getTexto4(),inter.getSinDLC(),inter.getConDLC(), inter.getEstadoPM(), inter.getFaltas(), 
-                inter.getDescontado(), inter.getEntrega(), inter.getTotal(),inter.getEstadoD());
+                inter.getDescontado(), inter.getEntrega(), inter.getTotal(),inter.getEstadoD(), inter.getCostos(), inter.getBrutas(), inter.getNetas());
         actu.start();
      
     }

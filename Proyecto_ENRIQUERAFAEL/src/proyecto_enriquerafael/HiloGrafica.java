@@ -61,10 +61,10 @@ public class HiloGrafica extends Thread{
          
         
                         
-         int valor1=recursos.getDineroProducido()-(recursos.getSueldoEmpleados()+recursos.getSueldoProjectManager()+recursos.getSueldoDirector());
-         int valor2=recursos2.getDineroProducido()-(recursos2.getSueldoEmpleados()+recursos2.getSueldoProjectManager()+recursos2.getSueldoDirector());
+         int valor1=recursos.getDineroProducido()-(recursos.getSueldoEmpleados()+recursos.getSueldoProjectManager()+recursos.getSueldoDirector()- recursos.descontado);
+         int valor2=recursos2.getDineroProducido()-(recursos2.getSueldoEmpleados()+recursos2.getSueldoProjectManager()+recursos2.getSueldoDirector()-recursos2.descontado);
          dataset.addValue(valor1, "Nintendo", String.valueOf(recursos.getDiasPasados()));
-         dataset.addValue(valor2, "Betesda", String.valueOf(recursos.getDiasPasados()));
+         dataset.addValue(valor2, "Bethesda", String.valueOf(recursos.getDiasPasados()));
          grafico.setLayout(new BorderLayout());
             
 

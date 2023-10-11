@@ -40,13 +40,13 @@ public class DirectorJuegos extends Thread {
             try {
                 
                 if (this.recursos.getDiasSobrantes() == 0) {
-                    deliverJuegos();                   
+                    deliverJuegos(); 
                 } else {
                     randomHour = this.getRandomHourInMs();
                     sleep(randomHour);
                     this.setRevisarManager(true);
                     verificarManager();
-                    EstadoD.setText("");
+                    EstadoD.setText("Trabajando");
                     long remainingDay = (long) (this.recursos.getDayDurationInMs() - (randomHour + twentyFiveMinutes));
                     recursos.sueldoDirector();
                     sleep(remainingDay);
@@ -68,9 +68,10 @@ public class DirectorJuegos extends Thread {
     public void verificarManager() {
         long twentyFiveMinutes = getTwentyFiveMinutesInMs();
         if (isRevisarManager()) {
+                    EstadoD.setText("Verificando");
+
             if (!this.manager.getTrabajando()) {
                 try {
-                    EstadoD.setText("Verificadndo");
                     this.setRevisarManager(false);
                     this.manager.setSalarioacc(this.manager.getSalarioacc() - 50);
                     this.manager.setDiscountedSalary(this.manager.getDiscountedSalary() + 50);
@@ -88,6 +89,7 @@ public class DirectorJuegos extends Thread {
                     Logger.getLogger(DirectorJuegos.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            EstadoD.setText("Trabajando");
             
         }
     }
@@ -96,6 +98,7 @@ public class DirectorJuegos extends Thread {
         int standardIncome;
         int accessoryIncome;
         try {
+            EstadoD.setText("Enviando");
             // Resetea contador
             this.recursos.getCounterMutex().acquire();
             this.recursos.setDiasSobrantes(this.recursos.getDias());

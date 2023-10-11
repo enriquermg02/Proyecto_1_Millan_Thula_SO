@@ -14,6 +14,34 @@ import javax.swing.JTextField;
  * @author enriq
  */
 public final class Interfaz extends javax.swing.JFrame {
+
+    /**
+     * @return the Costos
+     */
+    public JTextField getCostos() {
+        return Costos;
+    }
+
+    /**
+     * @param Costos the Costos to set
+     */
+    public void setCostos(JTextField Costos) {
+        this.Costos = Costos;
+    }
+
+    /**
+     * @return the brutas
+     */
+    public JTextField getBrutas() {
+        return brutas;
+    }
+
+    /**
+     * @param brutas the brutas to set
+     */
+    public void setBrutas(JTextField brutas) {
+        this.brutas = brutas;
+    }
     
      public Developer trabajadores [];
      public Drive drive;
@@ -408,14 +436,14 @@ public final class Interfaz extends javax.swing.JFrame {
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
 
         jLabel15.setText("¿Que esta haciendo?");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, 20));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, 20));
 
         EstadoD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EstadoDActionPerformed(evt);
             }
         });
-        jPanel1.add(EstadoD, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 100, -1));
+        jPanel1.add(EstadoD, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 100, -1));
 
         jLabel16.setText("¿Que esta haciendo?");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, 20));
@@ -425,7 +453,7 @@ public final class Interfaz extends javax.swing.JFrame {
                 EstadoPMActionPerformed(evt);
             }
         });
-        jPanel1.add(EstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
+        jPanel1.add(EstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 100, -1));
 
         jLabel17.setText("Dinero Descontado");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
@@ -500,7 +528,7 @@ public final class Interfaz extends javax.swing.JFrame {
     private void NarrativaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_NarrativaStateChanged
         //ContadorSpinner.getDevelopers()[0]= Integer.valueOf(Narrativa.getValue().toString());
         
-     
+        
         int numero=0;
         
         for (int i = 0; i < ContadorSpinner.getDevelopers().length; i++) {
@@ -793,14 +821,14 @@ public final class Interfaz extends javax.swing.JFrame {
     /**
      * @return the Entrega
      */
-    public javax.swing.JTextField getEntrega() {
+    public JTextField getEntrega() {
         return Entrega;
     }
 
     /**
      * @param Entrega the Entrega to set
      */
-    public void setEntrega(javax.swing.JTextField Entrega) {
+    public void setEntrega(JTextField Entrega) {
         this.Entrega = Entrega;
     }
 
@@ -816,5 +844,19 @@ public final class Interfaz extends javax.swing.JFrame {
      */
     public void setTotal(JTextField Total) {
         this.Total = Total;
+    }
+
+    /**
+     * @return the netas
+     */
+    public JTextField getNetas() {
+        return netas;
+    }
+
+    /**
+     * @param netas the netas to set
+     */
+    public void setNetas(JTextField netas) {
+        this.netas = netas;
     }
 }

@@ -18,10 +18,11 @@ public class Drive {
     public int DLC;
     public int juegos; 
     public int juegosDLC;
-    private int contador;
+    public int contadorN;
+    public int contadorB;
     public Semaphore counterMutex;
 
-    public Drive(int levels, int narrative, int sprite, int sistem, int DLC, int juegos, int juegosDLC, int contador) {
+    public Drive(int levels, int narrative, int sprite, int sistem, int DLC, int juegos, int juegosDLC) {
         this.levels = levels;
         this.narrative = narrative;
         this.sprite = sprite;
@@ -29,7 +30,8 @@ public class Drive {
         this.DLC = DLC;
         this.juegos = juegos;
         this.juegosDLC = juegosDLC;
-        this.contador = contador;
+        this.contadorN = 0;
+        this.contadorB = 0;
         this.counterMutex = new Semaphore(1);
 
     }
@@ -125,18 +127,18 @@ public class Drive {
         setDLC(getDLC()+1);
         
     }
-    else if((type==5)&&(getContador()<5)){
+    else if((type==5)&&(this.contadorN <5)){
                 if((getNarrative() >= 2) && (getLevels() >= 1) 
-             && (getSprite()>=4) && (getSistem()>=4) && (getDLC()>=2)){
+             && (getSprite()>=4) && (getSistem()>=4)){
             setJuegos(getJuegos()+1);
             setLevels(getLevels()-1);
             setNarrative(getNarrative()-2);
             setSistem(getSistem()-4);
             setSprite(getSprite()-4);
-            setContador(getContador()+1);
+            this.contadorN +=1;
                             }    
     }
-    else if ((type==5)&&(getContador()==5)){
+    else if ((type==5)&&(this.contadorN==5)){
         if((getNarrative() >= 2) && (getLevels() >= 1) 
              && (getSprite()>=4) && (getSistem()>=4) && (getDLC()>=2)){
             setJuegosDLC(getJuegosDLC()+1);
@@ -145,8 +147,7 @@ public class Drive {
             setSistem(getSistem()-4);
             setSprite(getSprite()-4);
             setDLC(getDLC()-2);
-            setContador(0);
-
+            this.contadorN=0;
                             }      
     }
    }else if(compania=="Betesda"){
@@ -171,28 +172,28 @@ public class Drive {
         setDLC(getDLC()+1);
         
     }
-    else if((type==5)&&(getContador()<5)){
-                if((getNarrative() >= 2) && (getLevels() >= 1) 
-             && (getSprite()>=4) && (getSistem()>=4) && (getDLC()>=2)){
+    else if((type==5)&&(this.contadorB<6)){
+                if((getNarrative() >= 2) && (getLevels() >= 3) 
+             && (getSprite()>=4) && (getSistem()>=6)){
             setJuegos(getJuegos()+1);
             setLevels(getLevels()-3);
             setNarrative(getNarrative()-2);
             setSistem(getSistem()-6);
             setSprite(getSprite()-4);
             
-            setContador(getContador()+1);
+            this.contadorB+=1;
                             }    
     }
-    else if ((type==5)&&(getContador()==5)){
-        if((getNarrative() >= 2) && (getLevels() >= 1) 
-             && (getSprite()>=4) && (getSistem()>=4) && (getDLC()>=2)){
+    else if ((type==5)&&(this.contadorB==6)){
+        if((getNarrative() >= 2) && (getLevels() >= 3) 
+             && (getSprite()>=4) && (getSistem()>=6) && (getDLC()>=5)){
             setJuegosDLC(getJuegosDLC()+1);
-            setLevels(getLevels()-1);
+            setLevels(getLevels()-3);
             setNarrative(getNarrative()-2);
-            setSistem(getSistem()-4);
+            setSistem(getSistem()-6);
             setSprite(getSprite()-4);
             setDLC(getDLC()-5);
-            setContador(0);
+            this.contadorB=0;
 
                             }      
     } 
@@ -220,16 +221,6 @@ public class Drive {
     /**
      * @return the contador
      */
-    public int getContador() {
-        return contador;
-    }
-
-    /**
-     * @param contador the contador to set
-     */
-    public void setContador(int contador) {
-        this.contador = contador;
-    }
 
     /**
      * @return the counterMutex

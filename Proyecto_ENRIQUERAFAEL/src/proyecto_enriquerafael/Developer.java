@@ -81,11 +81,7 @@ public class Developer extends Thread {
         this.acc += this.productionPerDay;
         if (this.acc >= 1){
             
-            
-            
-            
-            
-            
+                                             
             try {
                  // sección critica
                 if (type==6){
