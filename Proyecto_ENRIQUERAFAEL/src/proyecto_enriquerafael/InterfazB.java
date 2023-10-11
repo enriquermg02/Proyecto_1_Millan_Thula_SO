@@ -15,25 +15,61 @@ import javax.swing.JTextField;
  */
 public class InterfazB extends javax.swing.JFrame {
     
-     Thread NarrativaDevelopers [];
+     
      Drive drive;
      Semaphore mutex;
      Recursos recursos;
-     ContadorProvisional ContadorSpinner;
+    private ContadorProvisional ContadorSpinner;
+   Thread NarrativaDevelopers [];
+     public Thread [] LevelsDevelopers;
+     public Thread [] SpritesDevelopers;
+     public Thread [] SistemDevelopers;
+     public Thread [] DLCDevelopers;
+     public Thread [] IntegradoresDevelopers;
+     int contadorNarrativa;
+     int contadorLevels;
+     int contadorSprites;
+     int contadorSistem;
+     int contadorDLC;
+     int contadorIntegradores;
     
-    public InterfazB(Drive drive,Semaphore mutex,Recursos recursos,Thread NarrativaDevelopers [],
+    public InterfazB(Drive drive,Semaphore mutex,Recursos recursos,
             ContadorProvisional ContadorSpinner) {
         initComponents();
         this.drive=drive;
         this.mutex= mutex;
         this.recursos =recursos;
-        this.NarrativaDevelopers=NarrativaDevelopers ;
+//        this.NarrativaDevelopers=NarrativaDevelopers ;
         this.ContadorSpinner=ContadorSpinner;
 //        Actualizar();
         setLocationRelativeTo(null);
 //        verificar(DLC);
 //  
- 
+
+//        PonerTrabajadores();
+        contadorNarrativa=0;
+        contadorLevels=0;
+        contadorSprites=0;
+        contadorSistem=0;
+        contadorDLC=0;
+        contadorIntegradores=0;
+        
+        this.NarrativaDevelopers= new Thread[13];
+        this.LevelsDevelopers= new Thread[13];
+        this.SpritesDevelopers= new Thread[13];
+        this.SistemDevelopers= new Thread[13];
+        this.DLCDevelopers= new Thread[13];
+        this.IntegradoresDevelopers= new Thread[13];
+        
+        
+        
+        
+                LLenar(0,NarrativaDevelopers,0.34f);
+                LLenar(1,LevelsDevelopers,0.34f);
+        LLenar(2,SpritesDevelopers,1);
+        LLenar(3,SistemDevelopers,1);
+        LLenar(4,DLCDevelopers,0.34f);
+        LLenar(5,IntegradoresDevelopers,0.25f);
     }
 
     public JTextField getD() {
@@ -45,7 +81,14 @@ public class InterfazB extends javax.swing.JFrame {
     }
 
     
-    
+//       public void PonerTrabajadores(){
+//        
+//        this.Narrativa.setValue(ContadorSpinner.narrative);
+//        this.Levels.setValue(ContadorSpinner.levels);
+//        this.Sprites.setValue(ContadorSpinner.sprite);
+//        this.DLC.setValue(ContadorSpinner.DLC);
+//        this.Integradores.setValue(ContadorSpinner.integrador);
+//    }
     
     
     
@@ -190,7 +233,13 @@ public class InterfazB extends javax.swing.JFrame {
     
    
     
-    
+       public void LLenar(int type,Thread [] array,float pp){
+        for (int i = 0; i < 13; i++) {
+   
+             Developer nuevo = new Developer("Betesda",type, pp, drive,mutex,recursos);
+             array[i]=nuevo;
+        }
+    }
     
 //     public void verificar(javax.swing.JSpinner DLC){
 //         
@@ -494,10 +543,55 @@ public class InterfazB extends javax.swing.JFrame {
     }//GEN-LAST:event_sinDLCActionPerformed
 
     private void NarrativaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_NarrativaStateChanged
-    
-        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
-            Narrativa.setValue(12);
+//    System.out.println(ContadorSpinner.getDevelopers()[0]);
+      
+          int numero=0;
+        
+        for (int i = 0; i < ContadorSpinner.getDevelopers().length; i++) {
+            numero+=ContadorSpinner.getDevelopers()[i];
         }
+        
+        
+        if (Integer.valueOf(Narrativa.getValue().toString())<ContadorSpinner.getDevelopers()[0]){
+          
+            ContadorSpinner.getDevelopers()[0]= Integer.valueOf(Narrativa.getValue().toString());
+        }else if(numero>=14  ){
+           
+            Narrativa.setValue(ContadorSpinner.getDevelopers()[0]);
+        }else{
+            ContadorSpinner.getDevelopers()[0]= Integer.valueOf(Narrativa.getValue().toString());
+           
+            
+        }
+        
+        //////
+        
+           if(contadorNarrativa<Integer.valueOf(Narrativa.getValue().toString())){
+            
+            if(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].resume();
+            contadorNarrativa++;
+                
+          
+            }else {
+                   NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].start();
+                contadorNarrativa++;
+                
+            }
+            
+
+        }else{
+            
+            NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].suspend();
+            
+            contadorNarrativa--;
+            
+            
+        }
+        
+        
+        
+        
         
 //        if(ContadorSpinner.getNarrative()<Integer.valueOf(Narrativa.getValue().toString())){
 //            if(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
@@ -531,39 +625,243 @@ public class InterfazB extends javax.swing.JFrame {
     private void LevelsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_LevelsStateChanged
         // TODO add your handling code here:
         
-        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
+                int numero=0;
+        
+        for (int i = 0; i < ContadorSpinner.getDevelopers().length; i++) {
+            numero+=ContadorSpinner.getDevelopers()[i];
+        }
+        
+        
+        if (Integer.valueOf(Levels.getValue().toString())<ContadorSpinner.getDevelopers()[1]){
+           
+            ContadorSpinner.getDevelopers()[1]= Integer.valueOf(Levels.getValue().toString());
+        }else if (numero>=14  ){
+            Levels.setValue(ContadorSpinner.getDevelopers()[1]);
+          
+        }else{
+            ContadorSpinner.getDevelopers()[1]= Integer.valueOf(Levels.getValue().toString());
+            
+          
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        if ((Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
             Levels.setValue(12);
+        }
+        
+        
+         if(contadorLevels<Integer.valueOf(Levels.getValue().toString())){
+            
+            if(LevelsDevelopers[ Integer.valueOf(Levels.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                LevelsDevelopers[ Integer.valueOf(Levels.getValue().toString())  ].resume();
+            contadorLevels++;
+                
+          
+            }else {
+                   LevelsDevelopers[ Integer.valueOf(Levels.getValue().toString())  ].start();
+                contadorLevels++;
+                
+            }
+            
+
+        }else{
+            
+            LevelsDevelopers[ Integer.valueOf(Levels.getValue().toString())  ].suspend();
+            
+            contadorLevels--;
+            
+            
         }
     }//GEN-LAST:event_LevelsStateChanged
 
     private void SpritesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpritesStateChanged
-if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
-            Sprites.setValue(12);
+int numero=0;
+        
+        for (int i = 0; i < ContadorSpinner.getDevelopers().length; i++) {
+            numero+=ContadorSpinner.getDevelopers()[i];
         }
+        
+        
+        if (Integer.valueOf(Sprites.getValue().toString())<ContadorSpinner.getDevelopers()[2]){
+            System.out.println("jaja");
+            ContadorSpinner.getDevelopers()[2]= Integer.valueOf(Sprites.getValue().toString());
+        }else if (numero>=14  ){
+            Sprites.setValue(ContadorSpinner.getDevelopers()[2]);
+           
+        }else{
+            ContadorSpinner.getDevelopers()[2]= Integer.valueOf(Sprites.getValue().toString());
+         
+        }
+        
+        
+        
+        if(contadorSprites<Integer.valueOf(Sprites.getValue().toString())){
+            
+            if(SpritesDevelopers[ Integer.valueOf(Sprites.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                SpritesDevelopers[ Integer.valueOf(Sprites.getValue().toString())  ].resume();
+            contadorSprites++;
+                
+          
+            }else {
+                   SpritesDevelopers[ Integer.valueOf(Sprites.getValue().toString())  ].start();
+                contadorSprites++;
+                
+            }
+            
 
+        }else{
+            
+            SpritesDevelopers[ Integer.valueOf(Sprites.getValue().toString())  ].suspend();
+            
+            contadorSprites--;
+            
+            
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_SpritesStateChanged
 
     private void sistemsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sistemsStateChanged
         // TODO add your handling code here:
-        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
-            sistems.setValue(12);
+         int numero=0;
+        
+        for (int i = 0; i < ContadorSpinner.getDevelopers().length; i++) {
+            numero+=ContadorSpinner.getDevelopers()[i];
+        }
+        
+        
+        if (Integer.valueOf(sistems.getValue().toString())<ContadorSpinner.getDevelopers()[3]){
+            System.out.println("jaja");
+            ContadorSpinner.getDevelopers()[3]= Integer.valueOf(sistems.getValue().toString());
+        }else if (numero>=14){
+            sistems.setValue(ContadorSpinner.getDevelopers()[3]);
+           
+        }else{
+            ContadorSpinner.getDevelopers()[3]= Integer.valueOf(sistems.getValue().toString());
+         
+        }
+        
+        
+        if(contadorSprites<Integer.valueOf(sistems.getValue().toString())){
+            
+            if(SistemDevelopers[ Integer.valueOf(sistems.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                SistemDevelopers[ Integer.valueOf(sistems.getValue().toString())  ].resume();
+            contadorSprites++;
+                
+          
+            }else {
+                   SistemDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].start();
+                contadorSprites++;
+                
+            }
+            
+
+        }else{
+            
+            SistemDevelopers[ Integer.valueOf(sistems.getValue().toString())  ].suspend();
+            
+            contadorSprites--;
+            
+            
         }
     }//GEN-LAST:event_sistemsStateChanged
 
     private void DLCStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_DLCStateChanged
         // TODO add your handling code here:
         
-        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
-            DLC.setValue(12);
+      int numero=0;
+        
+        for (int i = 0; i < ContadorSpinner.getDevelopers().length; i++) {
+            numero+=ContadorSpinner.getDevelopers()[i];
         }
+        
+        
+        if (Integer.valueOf(DLC.getValue().toString())<ContadorSpinner.getDevelopers()[4]){
+            System.out.println("jaja");
+            ContadorSpinner.getDevelopers()[4]= Integer.valueOf(DLC.getValue().toString());
+        }else if (numero>=14 ){
+            DLC.setValue(ContadorSpinner.getDevelopers()[4]);
+         
+        }else{
+            ContadorSpinner.getDevelopers()[4]= Integer.valueOf(DLC.getValue().toString());
+         
+        }
+        
+        
+        if(contadorDLC<Integer.valueOf(DLC.getValue().toString())){
+            
+            if(DLCDevelopers[ Integer.valueOf(DLC.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                DLCDevelopers[ Integer.valueOf(DLC.getValue().toString())  ].resume();
+            contadorDLC++;
+                
+          
+            }else {
+                   DLCDevelopers[ Integer.valueOf(DLC.getValue().toString())  ].start();
+                contadorDLC++;
+                
+            }
+            
+
+        }else{
+            
+            DLCDevelopers[ Integer.valueOf(DLC.getValue().toString())  ].suspend();
+            
+            contadorDLC--;
+            
+            
+        }
+        
     }//GEN-LAST:event_DLCStateChanged
 
     private void IntegradoresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_IntegradoresStateChanged
         // TODO add your handling code here:
-        if ((Integer.valueOf(Narrativa.getValue().toString())+Integer.valueOf(DLC.getValue().toString())+ Integer.valueOf(Levels.getValue().toString())+Integer.valueOf(sistems.getValue().toString())+Integer.valueOf(Sprites.getValue().toString())+Integer.valueOf(Integradores.getValue().toString()))>17){
-            Integradores.setValue(12);
+        int numero=0;
+        
+        for (int i = 0; i < ContadorSpinner.getDevelopers().length; i++) {
+            numero+=ContadorSpinner.getDevelopers()[i];
         }
+        
+        
+        if (Integer.valueOf(Integradores.getValue().toString())<ContadorSpinner.getDevelopers()[5]){
+            System.out.println("jaja");
+            ContadorSpinner.getDevelopers()[5]= Integer.valueOf(Integradores.getValue().toString());
+        }else if (numero>=14 ){
+            Integradores.setValue(ContadorSpinner.getDevelopers()[5]);
+           
+        }else{
+            ContadorSpinner.getDevelopers()[5]= Integer.valueOf(Integradores.getValue().toString());
+         
+        }
+        
+        if(contadorIntegradores<Integer.valueOf(Integradores.getValue().toString())){
+            
+            if(IntegradoresDevelopers[ Integer.valueOf(Integradores.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                IntegradoresDevelopers[ Integer.valueOf(Integradores.getValue().toString())  ].resume();
+            contadorIntegradores++;
+                
+          
+            }else {
+                   IntegradoresDevelopers[ Integer.valueOf(Integradores.getValue().toString())  ].start();
+                contadorIntegradores++;
+                
+            }
+            
+
+        }else{
+            
+            IntegradoresDevelopers[ Integer.valueOf(Integradores.getValue().toString())  ].suspend();
+            
+            contadorIntegradores--;
+            
+            
+        }
+        
+    
     }//GEN-LAST:event_IntegradoresStateChanged
 
     private void EntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntregaActionPerformed

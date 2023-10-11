@@ -28,6 +28,7 @@ public final class InterfazG extends javax.swing.JFrame {
     
     
         Semaphore mutex = new Semaphore(1);
+        Semaphore mutex2 = new Semaphore(1);
         //Area Nintendo//
         Recursos recursosN= new Recursos(0,0,0,0,0);
         Drive drive = new Drive(0,0,0,0,0,0,0);
@@ -41,8 +42,8 @@ public final class InterfazG extends javax.swing.JFrame {
         Drive driveB = new Drive(0,0,0,0,0,0,0);
         ContadorProvisional ContadorB = new ContadorProvisional();
         Thread DevelopersB []= new Thread[20];
-        InterfazB interB = new InterfazB(driveB, mutex, recursosB, DevelopersB, ContadorB);
-        CompaniaB bethesda =new CompaniaB (interB ,mutex, recursosB, driveB);
+        InterfazB interB = new InterfazB(driveB, mutex, recursosB, ContadorB);
+        CompaniaB bethesda =new CompaniaB (interB ,mutex2, recursosB, driveB);
         
         
         //graficos

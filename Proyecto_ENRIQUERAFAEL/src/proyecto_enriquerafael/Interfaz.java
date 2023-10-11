@@ -43,44 +43,79 @@ public final class Interfaz extends javax.swing.JFrame {
         this.brutas = brutas;
     }
     
-     public Developer trabajadores [];
+//     public Developer trabajadores [];
+     private Thread [] NarrativaDevelopers;
+     private Thread [] LevelsDevelopers;
+     private Thread [] SpritesDevelopers;
+     private Thread [] SistemDevelopers;
+     private Thread [] DLCDevelopers;
+     private Thread [] IntegradoresDevelopers;
      public Drive drive;
      public Semaphore mutex;
      public Recursos recursos;
      public ContadorProvisional ContadorSpinner;
-     int contador;
+     int contadorNarrativa;
+     int contadorLevels;
+     int contadorSprites;
+     int contadorSistem;
+     int contadorDLC;
+     int contadorIntegradores;
      boolean med;
 
    
     
-    public Interfaz(Drive drive,Semaphore mutex,Recursos recursos,Thread NarrativaDevelopers [],
+    public Interfaz(Drive drive,Semaphore mutex,Recursos recursos,Thread hola [],
         ContadorProvisional ContadorN) {
         initComponents();
         this.drive=drive;
         this.mutex= mutex;
         this.recursos =recursos;
         this.ContadorSpinner = ContadorN;
-        contador=0;
+        contadorNarrativa=0;
+        contadorLevels=0;
+        contadorSprites=0;
+        contadorSistem=0;
+        contadorDLC=0;
+        contadorIntegradores=0;
         this.med=true;
+        this.NarrativaDevelopers= new Thread[13];
+        this.LevelsDevelopers= new Thread[13];
+        this.SpritesDevelopers= new Thread[13];
+        this.SistemDevelopers= new Thread[13];
+        this.DLCDevelopers= new Thread[13];
+        this.IntegradoresDevelopers= new Thread[13];
+        
         
 
       
 //        Actualizar();
-        PonerTrabajadores();
+        LLenar(0,NarrativaDevelopers,0.25f);
+        LLenar(1,LevelsDevelopers,0.25f);
+        LLenar(2,SpritesDevelopers,1);
+        LLenar(3,SistemDevelopers,1);
+        LLenar(4,DLCDevelopers,0.5f);
+        LLenar(5,IntegradoresDevelopers,0.25f);
+//        PonerTrabajadores();
         setLocationRelativeTo(null);
  
     }
     
-    public void PonerTrabajadores(){
-        
-        this.Narrativa.setValue(ContadorSpinner.narrative);
-        this.Levels.setValue(ContadorSpinner.levels);
-        this.Sprites.setValue(ContadorSpinner.sprite);
-        this.DLC.setValue(ContadorSpinner.DLC);
-        this.Integradores.setValue(ContadorSpinner.integrador);
+//    public void PonerTrabajadores(){
+//        
+//        this.Narrativa.setValue(ContadorSpinner.narrative);
+//        this.Levels.setValue(ContadorSpinner.levels);
+//        this.Sprites.setValue(ContadorSpinner.sprite);
+//        this.DLC.setValue(ContadorSpinner.DLC);
+//        this.Integradores.setValue(ContadorSpinner.integrador);
+//    }
+
+    public void LLenar(int type,Thread [] array,float pp){
+        for (int i = 0; i < 13; i++) {
+   
+             Developer nuevo = new Developer("Nintendo",type, pp, drive,mutex,recursos);
+             array[i]=nuevo;
+        }
     }
-
-
     
     public JSpinner getDLC() {
         return DLC;
@@ -548,7 +583,29 @@ public final class Interfaz extends javax.swing.JFrame {
         
 
          
-        
+           
+        if(contadorNarrativa<Integer.valueOf(Narrativa.getValue().toString())){
+            
+            if(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].resume();
+            contadorNarrativa++;
+                
+          
+            }else {
+                   NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].start();
+                contadorNarrativa++;
+                
+            }
+            
+
+        }else{
+            
+            NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].suspend();
+            
+            contadorNarrativa--;
+            
+            
+        }
         
 //        if(ContadorSpinner.getNarrative()<Integer.valueOf(Narrativa.getValue().toString())){
 //            if(NarrativaDevelopers[ Integer.valueOf(Narrativa.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
@@ -590,15 +647,41 @@ public final class Interfaz extends javax.swing.JFrame {
         
         
         if (Integer.valueOf(Levels.getValue().toString())<ContadorSpinner.getDevelopers()[1]){
-            System.out.println("jaja");
+           
             ContadorSpinner.getDevelopers()[1]= Integer.valueOf(Levels.getValue().toString());
-        }else if (numero>=17 && med== true ){
+        }else if (numero>=17  ){
             Levels.setValue(ContadorSpinner.getDevelopers()[1]);
           
         }else{
             ContadorSpinner.getDevelopers()[1]= Integer.valueOf(Levels.getValue().toString());
             
           
+        }
+        
+        
+        
+        
+        if(contadorLevels<Integer.valueOf(Levels.getValue().toString())){
+            
+            if(LevelsDevelopers[ Integer.valueOf(Levels.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                LevelsDevelopers[ Integer.valueOf(Levels.getValue().toString())  ].resume();
+            contadorLevels++;
+                
+          
+            }else {
+                   LevelsDevelopers[ Integer.valueOf(Levels.getValue().toString())  ].start();
+                contadorLevels++;
+                
+            }
+            
+
+        }else{
+            
+            LevelsDevelopers[ Integer.valueOf(Levels.getValue().toString())  ].suspend();
+            
+            contadorLevels--;
+            
+            
         }
     }//GEN-LAST:event_LevelsStateChanged
 
@@ -615,12 +698,37 @@ public final class Interfaz extends javax.swing.JFrame {
         if (Integer.valueOf(Sprites.getValue().toString())<ContadorSpinner.getDevelopers()[2]){
             System.out.println("jaja");
             ContadorSpinner.getDevelopers()[2]= Integer.valueOf(Sprites.getValue().toString());
-        }else if (numero>=17 && med== true ){
+        }else if (numero>=17  ){
             Sprites.setValue(ContadorSpinner.getDevelopers()[2]);
            
         }else{
             ContadorSpinner.getDevelopers()[2]= Integer.valueOf(Sprites.getValue().toString());
          
+        }
+        
+        
+        
+        if(contadorSprites<Integer.valueOf(Sprites.getValue().toString())){
+            
+            if(SpritesDevelopers[ Integer.valueOf(Sprites.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                SpritesDevelopers[ Integer.valueOf(Sprites.getValue().toString())  ].resume();
+            contadorSprites++;
+                
+          
+            }else {
+                   SpritesDevelopers[ Integer.valueOf(Sprites.getValue().toString())  ].start();
+                contadorSprites++;
+                
+            }
+            
+
+        }else{
+            
+            SpritesDevelopers[ Integer.valueOf(Sprites.getValue().toString())  ].suspend();
+            
+            contadorSprites--;
+            
+            
         }
 
         // TODO add your handling code here:
@@ -645,6 +753,30 @@ public final class Interfaz extends javax.swing.JFrame {
             ContadorSpinner.getDevelopers()[3]= Integer.valueOf(sistems.getValue().toString());
          
         }
+        
+        
+        if(contadorSprites<Integer.valueOf(sistems.getValue().toString())){
+            
+            if(SistemDevelopers[ Integer.valueOf(sistems.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                SistemDevelopers[ Integer.valueOf(sistems.getValue().toString())  ].resume();
+            contadorSprites++;
+                
+          
+            }else {
+                   SistemDevelopers[ Integer.valueOf(sistems.getValue().toString())  ].start();
+                contadorSprites++;
+                
+            }
+            
+
+        }else{
+            
+            SistemDevelopers[ Integer.valueOf(sistems.getValue().toString())  ].suspend();
+            
+            contadorSprites--;
+            
+            
+        }
     }//GEN-LAST:event_sistemsStateChanged
 
     private void DLCStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_DLCStateChanged
@@ -668,7 +800,28 @@ public final class Interfaz extends javax.swing.JFrame {
         }
         
         
-        
+        if(contadorDLC<Integer.valueOf(DLC.getValue().toString())){
+            
+            if(DLCDevelopers[ Integer.valueOf(DLC.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                DLCDevelopers[ Integer.valueOf(DLC.getValue().toString())  ].resume();
+            contadorDLC++;
+                
+          
+            }else {
+                   DLCDevelopers[ Integer.valueOf(DLC.getValue().toString())  ].start();
+                contadorDLC++;
+                
+            }
+            
+
+        }else{
+            
+            DLCDevelopers[ Integer.valueOf(DLC.getValue().toString())  ].suspend();
+            
+            contadorDLC--;
+            
+            
+        }
         
         
         
@@ -688,10 +841,10 @@ public final class Interfaz extends javax.swing.JFrame {
         }
         
         
-        if (Integer.valueOf(Narrativa.getValue().toString())<ContadorSpinner.getDevelopers()[5]){
+        if (Integer.valueOf(Integradores.getValue().toString())<ContadorSpinner.getDevelopers()[5]){
             System.out.println("jaja");
-            ContadorSpinner.getDevelopers()[5]= Integer.valueOf(Narrativa.getValue().toString());
-        }else if (numero>=17 && med== true ){
+            ContadorSpinner.getDevelopers()[5]= Integer.valueOf(Integradores.getValue().toString());
+        }else if (numero>=17  ){
             Integradores.setValue(ContadorSpinner.getDevelopers()[5]);
            
         }else{
@@ -699,6 +852,28 @@ public final class Interfaz extends javax.swing.JFrame {
          
         }
         
+        if(contadorIntegradores<Integer.valueOf(Integradores.getValue().toString())){
+            
+            if(IntegradoresDevelopers[ Integer.valueOf(Integradores.getValue().toString())  ].getState()== Thread.State.TIMED_WAITING){
+                IntegradoresDevelopers[ Integer.valueOf(Integradores.getValue().toString())  ].resume();
+            contadorIntegradores++;
+                
+          
+            }else {
+                   IntegradoresDevelopers[ Integer.valueOf(Integradores.getValue().toString())  ].start();
+                contadorIntegradores++;
+                
+            }
+            
+
+        }else{
+            
+            IntegradoresDevelopers[ Integer.valueOf(Integradores.getValue().toString())  ].suspend();
+            
+            contadorIntegradores--;
+            
+            
+        }
         
     }//GEN-LAST:event_IntegradoresStateChanged
 
