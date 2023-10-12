@@ -33,15 +33,13 @@ public final class InterfazG extends javax.swing.JFrame {
         Recursos recursosN= new Recursos(0,0,0,0,0);
         Drive drive = new Drive(0,0,0,0,0,0,0);
         ContadorProvisional ContadorN = new ContadorProvisional();
-        Thread DevelopersN []= new Thread[20];
-        Interfaz interN = new Interfaz(drive,mutex,recursosN,DevelopersN,ContadorN);
+        Interfaz interN = new Interfaz(drive,mutex,recursosN,ContadorN);
         Compania nintendo =new Compania (interN, mutex, recursosN, drive);
 //        //Fin//
 //        //Area Bethesda//
         Recursos recursosB = new Recursos(0,0,0,0,0);
         Drive driveB = new Drive(0,0,0,0,0,0,0);
         ContadorProvisional ContadorB = new ContadorProvisional();
-        Thread DevelopersB []= new Thread[20];
         InterfazB interB = new InterfazB(driveB, mutex, recursosB, ContadorB);
         CompaniaB bethesda =new CompaniaB (interB ,mutex2, recursosB, driveB);
         
@@ -51,7 +49,7 @@ public final class InterfazG extends javax.swing.JFrame {
         DefaultCategoryDataset dataset2= new DefaultCategoryDataset();
         
         
-        JFreeChart linea= ChartFactory.createLineChart("hads","Tiempo","Beneficos",dataset);
+        JFreeChart linea= ChartFactory.createLineChart("Nintendo VS Bethesda","Tiempo","Beneficos",dataset);
         ChartPanel panel= new ChartPanel(linea);
          
       
@@ -142,12 +140,12 @@ public final class InterfazG extends javax.swing.JFrame {
             int dlcN = ((Long) initialEmployeeCountN.get("DLC")).intValue();
             int integradorN = ((Long) initialEmployeeCountN.get("integrador")).intValue();
             
-            interN.ContadorSpinner.setNarrative(narrativaN);
-            interN.ContadorSpinner.setLevels(nivelesN);
-            interN.ContadorSpinner.setSprite(spriteN);
-            interN.ContadorSpinner.setSistem(sistemaN);
-            interN.ContadorSpinner.setDLC(dlcN);
-            interN.ContadorSpinner.setIntegrador(integradorN);
+            interN.Narrativa.setValue(narrativaN);
+            interN.Levels.setValue(nivelesN);
+            interN.Sprites.setValue(spriteN);
+            interN.sistems.setValue(sistemaN);
+            interN.DLC.setValue(dlcN);
+            interN.Integradores.setValue(integradorN);
             
             JSONObject initialEmployeeCountB = (JSONObject) jsonObject.get("initialEmployeeCountB");
             int narrativaB = ((Long) initialEmployeeCountB.get("narrativa")).intValue();
@@ -157,12 +155,12 @@ public final class InterfazG extends javax.swing.JFrame {
             int dlcB = ((Long) initialEmployeeCountB.get("DLC")).intValue();
             int integradorB = ((Long) initialEmployeeCountB.get("integrador")).intValue();
             
-            ContadorB.setNarrative(narrativaB);
-            ContadorB.setLevels(nivelesB);
-            ContadorB.setSprite(spriteB);
-            ContadorB.setSistem(sistemaB);
-            ContadorB.setDLC(dlcB);
-            ContadorB.setIntegrador(integradorB);
+            interB.Narrativa.setValue(narrativaB);
+            interB.Levels.setValue(nivelesB);
+            interB.Sprites.setValue(spriteB);
+            interB.sistems.setValue(sistemaB);
+            interB.DLC.setValue(dlcB);
+            interB.Integradores.setValue(integradorB);
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -174,20 +172,20 @@ public final class InterfazG extends javax.swing.JFrame {
         int daysForDeliveryB = Integer.parseInt(this.dias.getText());
         
         //Nintendo
-       int narrativaN = interN.ContadorSpinner.narrative;
-       int nivelesN = interN.ContadorSpinner.levels;
-       int spriteN = interN.ContadorSpinner.sprite;
-       int sistemaN = interN.ContadorSpinner.sistem;
-       int dlcN = interN.ContadorSpinner.DLC;
-       int integradorN = interN.ContadorSpinner.integrador;
+       int narrativaN = (Integer) interN.Narrativa.getValue();
+       int nivelesN = (Integer) interN.Levels.getValue();
+       int spriteN = (Integer) interN.Sprites.getValue();
+       int sistemaN = (Integer) interN.sistems.getValue();
+       int dlcN = (Integer) interN.DLC.getValue();
+       int integradorN = (Integer) interN.Integradores.getValue();
        
        //Bethesda
-       int narrativaB = ContadorB.narrative;
-       int nivelesB = ContadorB.levels;
-       int spriteB = ContadorB.sprite;
-       int sistemaB = ContadorB.sistem;
-       int dlcB = ContadorB.DLC;
-       int integradorB = ContadorB.integrador;
+       int narrativaB = (Integer) interB.Narrativa.getValue();
+       int nivelesB = (Integer) interB.Levels.getValue();
+       int spriteB = (Integer) interB.Sprites.getValue();
+       int sistemaB = (Integer) interB.sistems.getValue();
+       int dlcB = (Integer) interB.DLC.getValue();
+       int integradorB = (Integer) interB.Integradores.getValue();
        
         JSONParser parser = new JSONParser();
         try (FileReader fileReader = new FileReader("C:test\\valores.json")) {
@@ -235,47 +233,45 @@ public final class InterfazG extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Nintendo = new javax.swing.JButton();
         Bethesda = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        grafico = new javax.swing.JPanel();
+        TitleProject = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        TitleProject1 = new javax.swing.JPanel();
+        dias = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         segundos = new javax.swing.JTextField();
-        dias = new javax.swing.JTextField();
-        grafico = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Nintendo.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        Nintendo.setForeground(new java.awt.Color(255, 51, 255));
         Nintendo.setText("Nintendo");
         Nintendo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NintendoActionPerformed(evt);
             }
         });
-        jPanel1.add(Nintendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
+        jPanel1.add(Nintendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 120, 40));
 
+        Bethesda.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        Bethesda.setForeground(new java.awt.Color(102, 102, 255));
         Bethesda.setText("Bethesda");
         Bethesda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BethesdaActionPerformed(evt);
             }
         });
-        jPanel1.add(Bethesda, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
+        jPanel1.add(Bethesda, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 120, 40));
 
-        jLabel1.setText("SegundosPorDia");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
-
-        jLabel2.setText("DiasParaEntrega");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
-
-        segundos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                segundosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(segundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
-
-        dias.setText("30");
-        jPanel1.add(dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+        grafico.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout graficoLayout = new javax.swing.GroupLayout(grafico);
         grafico.setLayout(graficoLayout);
@@ -288,17 +284,91 @@ public final class InterfazG extends javax.swing.JFrame {
             .addGap(0, 230, Short.MAX_VALUE)
         );
 
-        jPanel1.add(grafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 360, 230));
+        jPanel1.add(grafico, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 360, 230));
+
+        TitleProject.setBackground(new java.awt.Color(51, 51, 51));
+        TitleProject.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Proyecto 1 Sistemas Operativos");
+        TitleProject.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 280, 40));
+
+        jPanel1.add(TitleProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, -1));
+
+        TitleProject1.setBackground(new java.awt.Color(102, 102, 255));
+        TitleProject1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        TitleProject1.add(dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 70, -1));
+
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("DiasEntrega");
+        TitleProject1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        segundos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                segundosActionPerformed(evt);
+            }
+        });
+        TitleProject1.add(segundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 70, -1));
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("SegundosPorDia");
+        TitleProject1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        jPanel1.add(TitleProject1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 120, 430));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/mariokart.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 200, 390));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/doom.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 220, 390));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/thumbs-up-nice.gif"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 270, 200, 160));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 80, 160));
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -342,11 +412,19 @@ public final class InterfazG extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bethesda;
     private javax.swing.JButton Nintendo;
+    private javax.swing.JPanel TitleProject;
+    private javax.swing.JPanel TitleProject1;
     private javax.swing.JTextField dias;
     private javax.swing.JPanel grafico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField segundos;
     // End of variables declaration//GEN-END:variables
 }
