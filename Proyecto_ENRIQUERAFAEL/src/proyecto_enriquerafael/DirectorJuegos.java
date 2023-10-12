@@ -108,7 +108,7 @@ public class DirectorJuegos extends Thread {
             this.drive.getCounterMutex().acquire();
             sleep((long) this.recursos.getDayDurationInMs());
             standardIncome = (int) (this.drive.getJuegos() * this.precioNormal);
-            accessoryIncome = (int) (this.drive.getJuegos() * this.precioDLC);
+            accessoryIncome = (int) (this.drive.getJuegosDLC() * this.precioDLC);
             this.recursos.setDineroProducido(this.recursos.getDineroProducido() + standardIncome + accessoryIncome);
             this.drive.setJuegos(0);
             this.drive.setJuegosDLC(0);

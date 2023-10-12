@@ -507,6 +507,12 @@ public final class Interfaz extends javax.swing.JFrame {
         jLabel20.setText("Costos");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
         jPanel1.add(brutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 90, -1));
+
+        netas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                netasActionPerformed(evt);
+            }
+        });
         jPanel1.add(netas, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 330, 90, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -900,6 +906,10 @@ public final class Interfaz extends javax.swing.JFrame {
     private void CostosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CostosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CostosActionPerformed
+
+    private void netasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_netasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_netasActionPerformed
 
     /**
      * @param args the command line arguments
